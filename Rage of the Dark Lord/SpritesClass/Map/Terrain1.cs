@@ -51,7 +51,9 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain.Insert(10, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1440, 500, 200, 100)));
             listTerrain.Insert(11, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1500, 455, 200, 100)));
             listTerrain.Insert(12, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1700, 455, 200, 100)));
-            listTerrain.Insert(13, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 269, 201, 12)));
+            listTerrain.Insert(13, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1899, 269, 201, 13)));
+            listTerrain.Insert(14, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2099, 269, 201, 13)));
+            listTerrain.Insert(15, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 455, 200, 100)));
         }
 
       public  List<Terrain1> ReturnTerrain( ) {
@@ -74,6 +76,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             spriteBatch.Draw(listTerrain[11].Texture, listTerrain[11].Rectangle, Color.White);
             spriteBatch.Draw(listTerrain[12].Texture, listTerrain[12].Rectangle, Color.White);
             spriteBatch.Draw(listTerrain[13].Texture, listTerrain[13].Rectangle, Color.White);
+            spriteBatch.Draw(listTerrain[14].Texture, listTerrain[14].Rectangle, Color.White);
+            spriteBatch.Draw(listTerrain[15].Texture, listTerrain[15].Rectangle, Color.White);
         }
 
         public void LoadContent(ContentManager Content)
@@ -92,6 +96,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain[11].Texture = Content.Load<Texture2D>("terrain1");
             listTerrain[12].Texture = Content.Load<Texture2D>("terrain1");
             listTerrain[13].Texture = Content.Load<Texture2D>("topTerrain");
+            listTerrain[14].Texture = Content.Load<Texture2D>("topTerrain");
+            listTerrain[15].Texture = Content.Load<Texture2D>("terrain1");
 
         }
 

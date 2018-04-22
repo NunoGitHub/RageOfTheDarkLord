@@ -17,9 +17,9 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
        
         private bool clickedJump = false;
         Terrain1 terrain1 = new Terrain1();
-        private bool jump = false, takeLife=true;
+        private bool jump = false, takeLife=true, goAbove=false;
         private int count = 2;
-        private bool reverse = false, hollowKnightTouch = true;
+        private bool reverse = false, hollowKnightTouch = true, dontJump=false;
         int indexTerrain = 0, indexSpike, jumpHeight=135;
         public static Rectangle cameraMove;
         int life  = 100;
@@ -95,23 +95,32 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                 {
                     Gravity(-1, 1.5f);
                     i++;
-                  ///dfsfs
+                  
                 }     
                
             }
-            if (Stairs.climbStairs == true && indexTerrain < 13)
+            if (Stairs.climbStairs == true )
             {//a subir as escadas
                 jumpHeight = 0;
                 if (Keyboard.GetState().IsKeyUp(Keys.Up) == true)
                     Gravity(-1, 1.5f);//Quando solto a tecla Tira a gravidade  não desce
                 if (Keyboard.GetState().IsKeyDown(Keys.Up)) Gravity(-1, 2f);//sobe as escadas
-                if (this.Rectangle.Y <= 216) Gravity(1, 2f);// não deixa subir mais
-                if (Keyboard.GetState().IsKeyDown(Keys.Down)) Gravity(1, 1f);//desce
+                if (Keyboard.GetState().IsKeyDown(Keys.Down)) {  Gravity(1, 1f);  }//desce
+                //if (Keyboard.GetState().IsKeyDown(Keys.Down) ) Gravity(1, 2f);
 
+                    if (this.Rectangle.Y <= 216) { Stairs.climbStairs = false; jump = true; /*Gravity(1, 2f);*/ }// não deixa subir mais
+                if (this.Rectangle.Y >= 216 ) jump = true;//faz que não suba infinitamente quando sobe e desce das escadas sem tocar no terrain
+                if (jump == true && (Keyboard.GetState().IsKeyDown(Keys.Down)) && Stairs.climbStairs==true) {
+                    jump = false;  }
+                
             }
             if (jumpHeight == 0 && Stairs.climbStairs == false) {//ao cair das escadas retiro a gravidade excessiva
-
-                Gravity(-1, 2.5f);
+                //indexTerrain = 12;
+               Gravity(-1, 2.5f);
+               /* if (this.Rectangle.X >= 1850)
+                {
+                    Gravity(1, 2f);  jump = true;
+                }*/
             }
             int j = 0;
             while (j < count && this.Rectangle.Y<= Terrain1.listTerrain[indexTerrain].Rectangle.Y - jumpHeight && jump==true && Stairs.climbStairs==false)//cair
@@ -144,11 +153,26 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[9].Rectangle) == true) indexTerrain = 9;
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[10].Rectangle) == true) indexTerrain = 10;
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[11].Rectangle) == true) indexTerrain = 11;
-            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[12].Rectangle) == true) indexTerrain = 12;
-            if (this.Rectangle.X>=1890 && this.Rectangle.X<=2101 && this.Rectangle.Y>=220) { indexTerrain = 13;  }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down) == true  && this.Rectangle.X>= 1866 && this.Rectangle.X<= 1888 && this.Rectangle.Intersects(Stairs.listStairs[1].Rectangle) == true) { indexTerrain = 12;  }//para poder dexer a escada
-
-
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[12].Rectangle) == true) { jump = true; indexTerrain = 12; }
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[13].Rectangle) == true && Stairs.climbStairs == false) { indexTerrain = 13; jumpHeight = 135; }
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[14].Rectangle) == true ) indexTerrain = 14;
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[15].Rectangle) == true && Stairs.climbStairs == false) { indexTerrain = 15; jumpHeight = 135; }
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[13].Rectangle) == true && Stairs.climbStairs == true || Stairs.climbStairs == false && jumpHeight == 0) { indexTerrain = 12; }//para poder descer/ ao cair pela esquerda cai até ao terrain index 12
+            Console.WriteLine("index==" + indexTerrain);
+            
+            /*
+            if (dontJump == false)
+            {
+                if (this.Rectangle.X >= 1890 && this.Rectangle.X <= 2101 && this.Rectangle.Y >= 220) { indexTerrain = 13; Stairs.climbStairs = false; }
+                if (Keyboard.GetState().IsKeyDown(Keys.Down) == true && this.Rectangle.X >= 1866 && this.Rectangle.X <= 1888 && this.Rectangle.Intersects(Stairs.listStairs[Stairs.indexStairs].Rectangle) == true) { indexTerrain = 12; jump = true; }//para poder dexer a escada
+                if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[14].Rectangle) == true) indexTerrain = 14;
+                // if (this.Rectangle.Y >= 220) Stairs.climbStairs = false;}
+               
+            }
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[15].Rectangle) == true && dontJump!=false) {
+                indexTerrain = 15;/* Stairs.climbStairs = false; jump = true;*/ /*jumpHeight = 135;*/ /*dontJump = true; }
+            if (Stairs.climbStairs==true ) {
+                dontJump = false; }*/
             //spike colisions
 
             if (this.Rectangle.Intersects(SpikesTrap.listSpikesTrap[0].Rectangle) == true) indexSpike = 0;
@@ -156,11 +180,13 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
 
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[indexTerrain].Rectangle)==true )
             {
+               
                 clickedJump = false;
                 Gravity(0, 0.5f);
                 reverse = false;
                 jump = false;
                 jumpHeight = 135;
+              
             }
            else {
                 clickedJump = true;
