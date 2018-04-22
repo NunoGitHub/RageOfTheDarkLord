@@ -61,7 +61,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                 spriteBatch.Draw(listHollowKnight[1].Texture, listHollowKnight[1].Rectangle, listHollowKnight[1].KnightColor);
                 spriteBatch.Draw(HollowKnightBarLife, HollowKnightDrawBarLife(1), listHollowKnight[1].Color);
             }
-
+            //all
         }
         public void LoadContent(ContentManager Content) {
 
