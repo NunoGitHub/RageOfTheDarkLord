@@ -95,7 +95,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                 {
                     Gravity(-1, 1.5f);
                     i++;
-                  
+                  ///dfsfs
                 }     
                
             }
