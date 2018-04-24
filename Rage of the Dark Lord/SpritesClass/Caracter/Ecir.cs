@@ -173,6 +173,9 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                 indexTerrain = 15;/* Stairs.climbStairs = false; jump = true;*/ /*jumpHeight = 135;*/ /*dontJump = true; }
             if (Stairs.climbStairs==true ) {
                 dontJump = false; }*/
+
+
+
             //spike colisions
 
             if (this.Rectangle.Intersects(SpikesTrap.listSpikesTrap[0].Rectangle) == true) indexSpike = 0;
@@ -222,7 +225,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                     color = Color.White;
                 }
             }
-                //Ecir fall in Spiketrap
+                //Ecir fall in Spiketrap 
 
                 if (this.Rectangle.Intersects(SpikesTrap.listSpikesTrap[indexSpike].Rectangle) == true && ecirNotToutcSpike == true ) {
                     color = Color.Red;

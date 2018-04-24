@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
     class HollowKnight
     {
 
-        public static List<HollowKnight> listHollowKnight = new List<HollowKnight>(new HollowKnight[10]);
+        public static List<HollowKnight> listHollowKnight = new List<HollowKnight>(new HollowKnight[100]);
         public static int index;//indice do hollow knight
         double time = 0;
         Texture2D HollowKnightBarLife;
@@ -26,7 +26,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public int Life { get; set; }
         public Color Color { get; set; }
         public Color KnightColor { get; set; }
-        
+        //color = hollowknight Bar life
         public HollowKnight(Rectangle rect, Texture2D texture, int velocityX, int direction, int life, Color color, Color knightColor) {
             Rectangle = rect;
             Texture = texture;
@@ -49,7 +49,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             listHollowKnight.Insert(1, new HollowKnight(new Rectangle(1498, 402, 65, 65), new Texture2D(graphics.GraphicsDevice, 50, 50), 2, 1, 200,Color.Transparent,Color.White));
 
         }
-        public void Draw(SpriteBatch spriteBatch) { 
+        public void Draw(SpriteBatch spriteBatch) {
            
             if (listHollowKnight[0] != null)
             {

@@ -19,6 +19,7 @@ namespace Rage_of_the_Dark_Lord
         Ecir ecir= new Ecir();
         Zombie zombie = new Zombie();
         Stairs stairs= new Stairs();
+        Ogre ogre = new Ogre();
         Camera camera;
         Terrain1 terrain1= new Terrain1();
         HollowKnight hollowKnight = new HollowKnight();
@@ -53,6 +54,7 @@ namespace Rage_of_the_Dark_Lord
             spikesTrap.InsertSpikes(graphics);
             hollowKnight.InsertHollowKnight(graphics);
             stairs.InsertStairs(graphics);
+            ogre.Insert(graphics);
             camera = new Camera(ecir.Rectangle.X, ecir.Rectangle.Y);
             //terrain1 = new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(0, height - 100, 200, 100));
             base.Initialize();  
@@ -76,6 +78,7 @@ namespace Rage_of_the_Dark_Lord
             spikesTrap.LoadContent(this.Content);
             hollowKnight.LoadContent(this.Content);
             stairs.LoadContent(this.Content);
+            ogre.LoadContent(this.Content);
  
             // TODO: use this.Content to load your game content here
         }
@@ -104,8 +107,9 @@ namespace Rage_of_the_Dark_Lord
             hollowKnight.Update();
             ecir.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
             stairs.Update();
+            ogre.Update();
 
-           
+
             if (zombie != null)
             {
                 zombie.UpdateTimer(gameTime.ElapsedGameTime.TotalSeconds);
@@ -137,6 +141,7 @@ namespace Rage_of_the_Dark_Lord
             spikesTrap.Draw(spriteBatch);
             hollowKnight.Draw(spriteBatch);
             stairs.Draw(spriteBatch);
+            ogre.Draw(spriteBatch);
            /* if (!ecir.EcirDestroy())*/ spriteBatch.Draw(ecir.Texture, ecir.Rectangle, ecir.EcirColor());
             if(zombie!=null)if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, zombie.ZombieColor()); else { zombie = null; }// se o zombie não for destruido e levar dano muda de cor quando a vida chagar a 0 é destruido
 
