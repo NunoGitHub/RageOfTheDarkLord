@@ -108,6 +108,7 @@ namespace Rage_of_the_Dark_Lord
             ecir.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
             stairs.Update();
             ogre.Update();
+            ogre.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
 
 
             if (zombie != null)

@@ -17,7 +17,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
        
         private bool clickedJump = false;
         Terrain1 terrain1 = new Terrain1();
-        private bool jump = false, takeLife = true,countTime=false, changeKillTime = false;
+        private bool jump = false, takeLife = true, takeLifeOgre=true, countTime = false, countTimeOgre=false, changeKillTime = false;
         private int count = 2;
         private bool reverse = false, hollowKnightTouch = true, dontJump=false, ogreTouch=true;
         int indexTerrain = 0, indexSpike, jumpHeight=135;
@@ -266,72 +266,70 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                 {
                     HollowKnight.listHollowKnight[HollowKnight.index].VelocityX = 2;
                     hollowKnightTouch = false; 
-                    killTime = false;
+                   // killTime = false;
                     takeLife = true;
                     countTime = false;
                 }
                 if (this.Rectangle.Intersects(HollowKnight.hollowAttackArea) == false && hollowKnightTouch == false)
                 {
                     hollowKnightTouch = true;
+                    if( time<1.6)
                     color = Color.White;
                     HollowKnight.listHollowKnight[HollowKnight.index].VelocityX = 2;
                     takeLife = true;
                   //  countTime = false;
 
 
-
-
                 }              
             }
+            Console.WriteLine("Time=" + time);
             /// Ogre takes Ecir life
-            Console.WriteLine("time=="+time);
+
             if (Ogre.listOgre[Ogre.index] != null)
             {
                 if (this.Rectangle.Intersects(Ogre.ogreAttackArea) && ogreTouch == true)
-                {   if (countTime == false)
+                {   if (countTimeOgre == false)
                     time = 0;
                     killTime = true;
-                    countTime = true;
+                    countTimeOgre = true;
                     Ogre.listOgre[Ogre.index].VelocityX = 0;
-                    if (time >= 1.5 && takeLife == true)// ogre  para e ataca
+                    if (time >= 1.6 && takeLifeOgre == true)// ogre  para e ataca
                     {
                         color = Color.Red;
                         life = life - 60;
-                        takeLife = false;
+                        takeLifeOgre = false;
+                        
 
                     }
-                    if (time >= 1.9)
+                    if (time >= 2)
                     {//Ogre  continua a andar depois do ataque
                         Ogre.listOgre[Ogre.index].VelocityX = 1;
                         ogreTouch = false;
                         time = 0;
                         killTime = false;
-                        takeLife = true;
+                        takeLifeOgre = true;
                     }
                 }
-                if (time >= 1.9)//quando para para atacar mas o jogador foge então o encir continua a andar
+                if (time >= 2)//quando para para atacar mas o jogador foge então o encir continua a andar
                 {
                     Ogre.listOgre[Ogre.index].VelocityX = 1;
                     ogreTouch = false;
-                    countTime = false; 
-                    killTime = false;
-                    takeLife = true;
+                    countTimeOgre = false;
+                    // killTime = false;
+                    takeLifeOgre = true;
                 }
                 if (this.Rectangle.Intersects(Ogre.ogreAttackArea) == false && ogreTouch == false)
                 {
                     ogreTouch = true;
                     color = Color.White;
                     Ogre.listOgre[Ogre.index].VelocityX = 1;
-                    takeLife = true;
+                    takeLifeOgre = true;
 
                 }
+                
             }
 
             //////////////////////////////////////////////
-            if (life == 0)
-                {
-                    Console.WriteLine("lose");
-                }
             
 
         }
