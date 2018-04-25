@@ -14,9 +14,12 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
     {
         public static List<Ogre> listOgre = new List<Ogre>(new Ogre[10]);
         private Texture2D OgreBarLife;
+        public static int index ;
+        private double time = 0;
+        public static Rectangle ogreCol, ogreAttackArea;
         private Rectangle Rectangle { get; set; }
         private Texture2D Texture { get; set; }
-        private int VelocityX { get; set; }
+        public int VelocityX { get; set; }
         private int Direction { get; set; }
         private int Life { get; set; }
         private Color Color { get; set; }
@@ -38,13 +41,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public void Insert(GraphicsDeviceManager graphics)
         {
             listOgre.Insert(0, new Ogre(new Rectangle(2099, 223, 50, 50), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 1, 300, Color.Transparent, Color.White));
-          /*  OgreBarLife=new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            OgreBarLife.SetData(new Color[] { Color.Red });*/
+            OgreBarLife=new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            OgreBarLife.SetData(new Color[] { Color.Red });
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(listOgre[0].Texture, listOgre[0].Rectangle, listOgre[0].OgreColor);
+            //.Draw(OgreBarLife,)
 
         }
         public void LoadContent(ContentManager Content)
@@ -61,8 +65,24 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
 
 
         }
+        public void OgreLife()
+        {
+            if (listOgre[0].Rectangle.X >= 1899 && listOgre[0].Rectangle.X <= 2270) index = 0;
+            if (listOgre[index] != null)
+            {
+                ogreCol = new Rectangle(listOgre[index].Rectangle.X - 60, listOgre[index].Rectangle.Y - 25, 150, 75);
+
+                if (listOgre[index].Direction == -1) ogreAttackArea = new Rectangle(listOgre[index].Rectangle.X - 20, listOgre[index].Rectangle.Y, 30, 75);
+                if (listOgre[index].Direction == 1) ogreAttackArea = new Rectangle(listOgre[index].Rectangle.X + 20, listOgre[index].Rectangle.Y, 30, 75);
+            }
+        }
+        public void UpdateTime(double deltaTime)//contador de segundos
+        {
+            time += deltaTime;
+        }
         public void Update() {
             Move();
+            OgreLife();
 
 
         }

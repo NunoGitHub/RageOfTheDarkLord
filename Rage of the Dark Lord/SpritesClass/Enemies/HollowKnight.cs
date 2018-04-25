@@ -162,7 +162,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                 }
             }
         }
-        public Rectangle HollowKnightDrawBarLife(int index)//barra da vida do zombie zombie
+        public Rectangle HollowKnightDrawBarLife(int index)//barra da vida do hollowknight
         {
             if(index==0) return new Rectangle(listHollowKnight[0].Rectangle.X + 7, listHollowKnight[0].Rectangle.Y - 10, (int)(listHollowKnight[0].Life * 0.3), 5);
             if (index == 1) return new Rectangle(listHollowKnight[1].Rectangle.X + 7, listHollowKnight[1].Rectangle.Y - 10, (int)(listHollowKnight[1].Life * 0.3), 5);
