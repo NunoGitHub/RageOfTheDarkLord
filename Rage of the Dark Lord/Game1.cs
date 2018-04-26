@@ -47,11 +47,11 @@ namespace Rage_of_the_Dark_Lord
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-           
+            spikesTrap.InsertSpikes(graphics);
             ecir = new Ecir(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(-200, 400, 30, 50),new Vector2(1,1), new Vector2(1, 1));
             zombie = new Zombie(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(400, 490, 30, 50), 1, 1);
             terrain1.InsertTerrain(graphics);
-            spikesTrap.InsertSpikes(graphics);
+           
             hollowKnight.InsertHollowKnight(graphics);
             stairs.InsertStairs(graphics);
             ogre.Insert(graphics);
@@ -67,6 +67,7 @@ namespace Rage_of_the_Dark_Lord
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+            spikesTrap.LoadContent(this.Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ecir.Texture = Content.Load<Texture2D>("Ecir");
             zombie.Texture = Content.Load<Texture2D>("Zombie");
@@ -75,7 +76,7 @@ namespace Rage_of_the_Dark_Lord
             zombieBarLife = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             zombieBarLife.SetData(new Color[] { Color.Red });
             terrain1.LoadContent(this.Content);
-            spikesTrap.LoadContent(this.Content);
+            
             hollowKnight.LoadContent(this.Content);
             stairs.LoadContent(this.Content);
             ogre.LoadContent(this.Content);
@@ -136,6 +137,7 @@ namespace Rage_of_the_Dark_Lord
             GraphicsDevice.Clear(Color.CornflowerBlue);
             screenScale = camera.GetScreenScale(graphicsDevice);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, null, camera1 *Matrix.CreateScale(screenScale));
+            spikesTrap.Draw(spriteBatch);
             spriteBatch.Draw(ecirBarLife, ecir.BarLifeEcir(), Color.Red);
             if(zombie!=null)spriteBatch.Draw(zombieBarLife,zombie.ZombieBarLife(), zombie.ColorBar());//se o zombie não for destruido desanha a bar life
             terrain1.Draw(spriteBatch);

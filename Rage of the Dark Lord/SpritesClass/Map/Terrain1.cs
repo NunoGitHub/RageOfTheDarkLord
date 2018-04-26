@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Rage_of_the_Dark_Lord.SpritesClass.Caracter;
 namespace Rage_of_the_Dark_Lord.SpritesClass.Map
 {
     class Terrain1
@@ -15,6 +16,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         private Rectangle rectangle;
         private static Rectangle staticRectangle;
         public static List<Terrain1> listTerrain = new List<Terrain1>(new Terrain1[100]);
+        private Color color;
 
 
         public Texture2D Texture { get; set; }
@@ -53,7 +55,10 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain.Insert(12, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1700, 455, 200, 100)));
             listTerrain.Insert(13, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1899, 269, 201, 13)));
             listTerrain.Insert(14, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2099, 269, 201, 13)));
-            listTerrain.Insert(15, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 455, 200, 100)));
+            listTerrain.Insert(15, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 455, 200, 100)));// listTerrain.Insert(15, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 465, 200, 90)));
+            //hide Terrain
+            listTerrain.Insert(16, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 390, 200, 90)));
+            listTerrain.Insert(17, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 320, 200, 90)));
         }
 
       public  List<Terrain1> ReturnTerrain( ) {
@@ -62,22 +67,24 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(listTerrain[0].Texture, listTerrain[0].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[1].Texture, listTerrain[1].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[2].Texture, listTerrain[2].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[3].Texture, listTerrain[3].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[4].Texture, listTerrain[4].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[5].Texture, listTerrain[5].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[6].Texture, listTerrain[6].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[7].Texture, listTerrain[7].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[8].Texture, listTerrain[8].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[9].Texture, listTerrain[9].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[10].Texture, listTerrain[10].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[11].Texture, listTerrain[11].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[12].Texture, listTerrain[12].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[13].Texture, listTerrain[13].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[14].Texture, listTerrain[14].Rectangle, Color.White);
-            spriteBatch.Draw(listTerrain[15].Texture, listTerrain[15].Rectangle, Color.White);
+            for (int i = 0; i < 18; i++)
+            {
+                if(i!=17 && i!=16)
+                spriteBatch.Draw(listTerrain[i].Texture, listTerrain[i].Rectangle, Color.White);
+            }
+
+
+            if (Ecir.cameraMove.Intersects(listTerrain[15].Rectangle) || Ecir.cameraMove.X>=1877 && Ecir.cameraMove.Y>=282)
+            {
+                color = Color.Transparent;
+            }
+            else {
+               color= Color.White;
+            }
+            spriteBatch.Draw(listTerrain[16].Texture, listTerrain[16].Rectangle, color);
+            spriteBatch.Draw(listTerrain[17].Texture, listTerrain[17].Rectangle, color);
+            Console.WriteLine("Y==" + Ecir.cameraMove.Y);
+            
         }
 
         public void LoadContent(ContentManager Content)
@@ -98,6 +105,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain[13].Texture = Content.Load<Texture2D>("topTerrain");
             listTerrain[14].Texture = Content.Load<Texture2D>("topTerrain");
             listTerrain[15].Texture = Content.Load<Texture2D>("terrain1");
+            listTerrain[16].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[17].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
 
         }
 
