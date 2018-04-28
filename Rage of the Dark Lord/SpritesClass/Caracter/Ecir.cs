@@ -221,6 +221,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             Rectangle lateralTerrain1_11 = new Rectangle(1500, 456, 0, 100);
             Rectangle lateralTerrain1_13 = new Rectangle(1903, 272, 0, 10);
             Rectangle lateralTerrain1_20 = new Rectangle(2100, 278, 0, 400);
+            Rectangle lateralTerrain1_21 = new Rectangle(2301, 278, 0, 400);
             if (this.Rectangle.Intersects(lateralTerrain1_1))EcirVelocity(2, 0);/* this.Rectangle.X<=198 && this.Rectangle.X>=194 && this.Rectangle.Y>=481)*/
             if (this.Rectangle.Intersects(lateralTerrain1_4)) EcirVelocity(-2, 0);/*this.Rectangle.X>=570 && this.Rectangle.X<=575 && this.Rectangle.Y>=481*/
             if(this.Rectangle.Intersects(lateralTerrain1_7)) EcirVelocity(-2,0);
@@ -228,6 +229,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             if (this.Rectangle.Intersects(lateralTerrain1_11)) EcirVelocity(-2, 0);
             if (this.Rectangle.Intersects(lateralTerrain1_13)) EcirVelocity(-2, 0);
             if (this.Rectangle.Intersects(lateralTerrain1_20)) EcirVelocity(-2, 0);
+            if (this.Rectangle.Intersects(lateralTerrain1_21)) EcirVelocity(2, 0);
 
         }
 
