@@ -59,6 +59,17 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             //hide Terrain
             listTerrain.Insert(16, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 390, 200, 90)));
             listTerrain.Insert(17, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 320, 200, 90)));
+            listTerrain.Insert(18, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 278, 200, 90)));
+
+
+
+            listTerrain.Insert(19, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 455, 200, 100)));
+            listTerrain.Insert(20, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 390, 200, 90)));
+            listTerrain.Insert(21, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 320, 200, 90)));
+            listTerrain.Insert(22, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 278, 200, 90)));
+
+
+
         }
 
       public  List<Terrain1> ReturnTerrain( ) {
@@ -67,14 +78,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < 23; i++)
             {
-                if(i!=17 && i!=16)
+                if(i!=17 && i!=16 && i != 18)
                 spriteBatch.Draw(listTerrain[i].Texture, listTerrain[i].Rectangle, Color.White);
             }
 
 
-            if (Ecir.cameraMove.Intersects(listTerrain[15].Rectangle) || Ecir.cameraMove.X>=1877 && Ecir.cameraMove.Y>=282)
+            if (/*Ecir.cameraMove.Intersects(listTerrain[15].Rectangle) ||*/ Ecir.cameraMove.X>=1877 && Ecir.cameraMove.Y>=282 && Ecir.cameraMove.X<=2100)
             {
                 color = Color.Transparent;
             }
@@ -83,6 +94,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             }
             spriteBatch.Draw(listTerrain[16].Texture, listTerrain[16].Rectangle, color);
             spriteBatch.Draw(listTerrain[17].Texture, listTerrain[17].Rectangle, color);
+            spriteBatch.Draw(listTerrain[18].Texture, listTerrain[18].Rectangle, color);
             Console.WriteLine("Y==" + Ecir.cameraMove.Y);
             
         }
@@ -107,6 +119,11 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain[15].Texture = Content.Load<Texture2D>("terrain1");
             listTerrain[16].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
             listTerrain[17].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[18].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[19].Texture = Content.Load<Texture2D>("terrain1");
+            listTerrain[20].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[21].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[22].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
 
         }
 

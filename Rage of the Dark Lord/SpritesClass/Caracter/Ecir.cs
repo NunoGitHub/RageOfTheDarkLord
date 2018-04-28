@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
+using Microsoft.Xna.Framework.Content;
 using Rage_of_the_Dark_Lord.SpritesClass.Map;
 using Rage_of_the_Dark_Lord.SpritesClass.Enemies;
 
@@ -17,7 +17,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
        
         private bool clickedJump = false;
         Terrain1 terrain1 = new Terrain1();
-        private bool jump = false, takeLife = true, takeLifeOgre=true, countTime = false, countTimeOgre=false, changeKillTime = false;
+        private bool jump = false, takeLife = true, takeLifeOgre=true, countTime = false, countTimeOgre=false, colision=true;
         private int count = 2, changeColor=0;
         private bool reverse = false, hollowKnightTouch = true, dontJump=false, ogreTouch=true;
         int indexTerrain = 0, indexSpike, jumpHeight=135;
@@ -141,7 +141,22 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
         //Define  Quando esta a colidir com o terreno e define os bool dos saltos para para o ecirMove
         public void TerrainColisions()
         {
-            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[0].Rectangle) == true) indexTerrain = 0;
+            if (colision == true)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    if ( i != 13 || i != 15 || i != 18 || i != 16 || i != 17)
+                    {
+                        colision = true;
+                    }
+                    else { colision = false; }
+                   
+                    if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[i].Rectangle) == true) indexTerrain = i;
+                    Console.WriteLine("index="+i);
+
+                }
+            }
+           /* if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[0].Rectangle) == true) indexTerrain = 0;
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[1].Rectangle) == true) indexTerrain = 1;
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[2].Rectangle) == true) indexTerrain = 2;
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[3].Rectangle) == true) indexTerrain = 3;
@@ -152,33 +167,34 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[8].Rectangle) == true) indexTerrain = 8;
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[9].Rectangle) == true) indexTerrain = 9;
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[10].Rectangle) == true) indexTerrain = 10;
-            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[11].Rectangle) == true) indexTerrain = 11;
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[11].Rectangle) == true) indexTerrain = 11;*/
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[12].Rectangle) == true) { jump = true; indexTerrain = 12; }
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[13].Rectangle) == true && Stairs.climbStairs == false) { indexTerrain = 13; jumpHeight = 135; }
-            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[14].Rectangle) == true ) indexTerrain = 14;
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[14].Rectangle) == true) { indexTerrain = 14;colision = true; }
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[15].Rectangle) == true && Stairs.climbStairs == false) { indexTerrain = 15; jumpHeight = 135; }
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[13].Rectangle) == true && Stairs.climbStairs == true || Stairs.climbStairs == false && jumpHeight == 0) { indexTerrain = 12; }//para poder descer/ ao cair pela esquerda cai até ao terrain index 12
-            Console.WriteLine("index==" + indexTerrain);
+            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[18].Rectangle) == true || this.Rectangle.Intersects(terrain1.ReturnTerrain()[17].Rectangle) == true || this.Rectangle.Intersects(terrain1.ReturnTerrain()[16].Rectangle) == true) indexTerrain = 15;
+           // if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[19].Rectangle) == true) colision=true;
 
-            /*
-            if (dontJump == false)
-            {
-                if (this.Rectangle.X >= 1890 && this.Rectangle.X <= 2101 && this.Rectangle.Y >= 220) { indexTerrain = 13; Stairs.climbStairs = false; }
-                if (Keyboard.GetState().IsKeyDown(Keys.Down) == true && this.Rectangle.X >= 1866 && this.Rectangle.X <= 1888 && this.Rectangle.Intersects(Stairs.listStairs[Stairs.indexStairs].Rectangle) == true) { indexTerrain = 12; jump = true; }//para poder dexer a escada
-                if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[14].Rectangle) == true) indexTerrain = 14;
-                // if (this.Rectangle.Y >= 220) Stairs.climbStairs = false;}
-               
-            }
-            if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[15].Rectangle) == true && dontJump!=false) {
-                indexTerrain = 15;/* Stairs.climbStairs = false; jump = true;*/ /*jumpHeight = 135;*/ /*dontJump = true; }
-            if (Stairs.climbStairs==true ) {
-                dontJump = false; }*/
+                /*
+                if (dontJump == false)
+                {
+                    if (this.Rectangle.X >= 1890 && this.Rectangle.X <= 2101 && this.Rectangle.Y >= 220) { indexTerrain = 13; Stairs.climbStairs = false; }
+                    if (Keyboard.GetState().IsKeyDown(Keys.Down) == true && this.Rectangle.X >= 1866 && this.Rectangle.X <= 1888 && this.Rectangle.Intersects(Stairs.listStairs[Stairs.indexStairs].Rectangle) == true) { indexTerrain = 12; jump = true; }//para poder dexer a escada
+                    if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[14].Rectangle) == true) indexTerrain = 14;
+                    // if (this.Rectangle.Y >= 220) Stairs.climbStairs = false;}
+
+                }
+                if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[15].Rectangle) == true && dontJump!=false) {
+                    indexTerrain = 15;/* Stairs.climbStairs = false; jump = true;*/ /*jumpHeight = 135;*/ /*dontJump = true; }
+                if (Stairs.climbStairs==true ) {
+                    dontJump = false; }*/
 
 
 
-            //spike colisions
+                //spike colisions
 
-            if (this.Rectangle.Intersects(SpikesTrap.listSpikesTrap[0].Rectangle) == true)
+                if (this.Rectangle.Intersects(SpikesTrap.listSpikesTrap[0].Rectangle) == true)
             { indexSpike = 0; }
             if (this.Rectangle.Intersects(SpikesTrap.listSpikesTrap[1].Rectangle) == true)
             { indexSpike = 1; }
@@ -204,13 +220,15 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             Rectangle lateralTerrain1_9 = new Rectangle(1440, 456, 0, 100);
             Rectangle lateralTerrain1_11 = new Rectangle(1500, 456, 0, 100);
             Rectangle lateralTerrain1_13 = new Rectangle(1903, 272, 0, 10);
+            Rectangle lateralTerrain1_20 = new Rectangle(2100, 278, 0, 400);
             if (this.Rectangle.Intersects(lateralTerrain1_1))EcirVelocity(2, 0);/* this.Rectangle.X<=198 && this.Rectangle.X>=194 && this.Rectangle.Y>=481)*/
             if (this.Rectangle.Intersects(lateralTerrain1_4)) EcirVelocity(-2, 0);/*this.Rectangle.X>=570 && this.Rectangle.X<=575 && this.Rectangle.Y>=481*/
             if(this.Rectangle.Intersects(lateralTerrain1_7)) EcirVelocity(-2,0);
             if (this.Rectangle.Intersects(lateralTerrain1_9)) EcirVelocity(2, 0);
             if (this.Rectangle.Intersects(lateralTerrain1_11)) EcirVelocity(-2, 0);
             if (this.Rectangle.Intersects(lateralTerrain1_13)) EcirVelocity(-2, 0);
-            
+            if (this.Rectangle.Intersects(lateralTerrain1_20)) EcirVelocity(-2, 0);
+
         }
 
        public void EcirLife() {//vida do ecir, este sofre dano pelos inimigos
