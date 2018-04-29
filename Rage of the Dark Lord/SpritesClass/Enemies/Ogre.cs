@@ -25,8 +25,9 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         private int Life { get; set; }
         private Color Color { get; set; }
         private Color OgreColor { get; set; }
+        private SpriteEffects SpriteEffects { get; set; }
 
-        public Ogre(Rectangle rectangle, Texture2D texture, int velocityX, int direction, int life, Color color, Color ogreColor)
+        public Ogre(Rectangle rectangle, Texture2D texture, int velocityX, int direction, int life, Color color, Color ogreColor, SpriteEffects spriteEffects)
         {
             Rectangle = rectangle;
             Texture = texture;
@@ -35,13 +36,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             Life = life;
             Color = color;
             OgreColor = ogreColor;
+            SpriteEffects = SpriteEffects;
 
         }
         public Ogre() { }
 
         public void Insert(GraphicsDeviceManager graphics)
         {
-            listOgre.Insert(0, new Ogre(new Rectangle(2099, 223, 50, 50), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 1, 300, Color.Transparent, Color.White));
+            listOgre.Insert(0, new Ogre(new Rectangle(2099, 232, 50, 50), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 1, 300, Color.Transparent, Color.White, SpriteEffects.None));
             OgreBarLife=new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             OgreBarLife.SetData(new Color[] { Color.Red });
 
@@ -50,7 +52,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         {
             if (listOgre[0] != null)
             {
-                spriteBatch.Draw(listOgre[0].Texture, listOgre[0].Rectangle, listOgre[0].OgreColor);
+                //spriteBatch.Draw(listOgre[0].Texture, listOgre[0].Rectangle, listOgre[0].OgreColor);
+                spriteBatch.Draw(listOgre[0].Texture, listOgre[0].Rectangle, null, listOgre[0].OgreColor, 0, new Vector2(listOgre[0].Rectangle.Width / 2, listOgre[0].Rectangle.Height / 2), listOgre[0].SpriteEffects, 0f);
                 spriteBatch.Draw(OgreBarLife, DrawBarLife(0), listOgre[0].Color);
             }
         }        
@@ -64,8 +67,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public void Move() {
             if (listOgre[0] != null)
             {
-                if (listOgre[0].Rectangle.X <= 1899) listOgre[0].Direction = 1;
-                if (listOgre[0].Rectangle.X >= 2270) listOgre[0].Direction = -1;
+                if (listOgre[0].Rectangle.X <= 1899) { listOgre[0].Direction = 1; listOgre[0].SpriteEffects = SpriteEffects.None; }
+                if (listOgre[0].Rectangle.X >= 2270) { listOgre[0].Direction = -1; listOgre[0].SpriteEffects = SpriteEffects.FlipHorizontally; }
                 listOgre[0].Rectangle = new Rectangle(listOgre[0].Rectangle.X + (listOgre[0].VelocityX * listOgre[0].Direction), listOgre[0].Rectangle.Y, listOgre[0].Rectangle.Width, listOgre[0].Rectangle.Height);
             }
 

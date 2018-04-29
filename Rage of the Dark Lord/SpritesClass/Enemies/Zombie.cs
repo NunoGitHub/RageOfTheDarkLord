@@ -19,6 +19,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public Texture2D Texture { get; set; }
         public int VelocityX { get; set; }
         public int Direction { get; set; }
+        public SpriteEffects SpriteEffect { get; set; }
         public static Rectangle zombieRectangle ;
         public static int zombieLife = 100;
         public bool attack = true;
@@ -31,12 +32,13 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
 
 
 
-        public Zombie(Texture2D texture, Rectangle rec, int velocityX, int direction)
+        public Zombie(Texture2D texture, Rectangle rec, int velocityX, int direction, SpriteEffects spriteEffect)
         {
             this.Rectangle = rec;
             this.Texture = texture;
             this.VelocityX = velocityX;
             this.Direction = direction;
+            SpriteEffect = spriteEffect;
             
         }
 
@@ -56,10 +58,13 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public void ZombieChageDirection() {
             if (this.Rectangle.Intersects(Terrain1.listTerrain[4].Rectangle)==true) {
                 this.Direction = -1;
+                this.SpriteEffect = SpriteEffects.FlipHorizontally;
             }
             if (this.Rectangle.Intersects(Terrain1.listTerrain[1].Rectangle) == true)
             {
                 this.Direction = 1;
+                this.SpriteEffect = SpriteEffects.None;
+
             }
 
         }

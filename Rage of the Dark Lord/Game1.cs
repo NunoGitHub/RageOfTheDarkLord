@@ -49,7 +49,7 @@ namespace Rage_of_the_Dark_Lord
             // TODO: Add your initialization logic here
             spikesTrap.InsertSpikes(graphics);
             ecir = new Ecir(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(-200, 400, 30, 50),new Vector2(1,1), new Vector2(1, 1));
-            zombie = new Zombie(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(400, 490, 30, 50), 1, 1);
+            zombie = new Zombie(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(400, 490, 30, 50), 1, 1,SpriteEffects.None);
             terrain1.InsertTerrain(graphics);
            
             hollowKnight.InsertHollowKnight(graphics);
@@ -146,10 +146,12 @@ namespace Rage_of_the_Dark_Lord
             stairs.Draw(spriteBatch);
             ogre.Draw(spriteBatch);
            /* if (!ecir.EcirDestroy())*/ spriteBatch.Draw(ecir.Texture, ecir.Rectangle, ecir.EcirColor());
-            if(zombie!=null)if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, zombie.ZombieColor()); else { zombie = null; }// se o zombie não for destruido e levar dano muda de cor quando a vida chagar a 0 é destruido
+            //  if(zombie!=null)if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, zombie.ZombieColor()); else { zombie = null; }// se o zombie não for destruido e levar dano muda de cor quando a vida chagar a 0 é destruido
+            if (zombie != null) if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, null, zombie.ZombieColor(), 0, new Vector2(zombie.Rectangle.Width / 2, zombie.Rectangle.Height / 2),zombie.SpriteEffect, 0f);
 
-           
-                spriteBatch.End();
+
+
+            spriteBatch.End();
 
             // TODO: Add your drawing code here
 
