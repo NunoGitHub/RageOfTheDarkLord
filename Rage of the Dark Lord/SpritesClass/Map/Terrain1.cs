@@ -12,8 +12,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
 {
     class Terrain1
     {
-        private Texture2D texture;
-        private Rectangle rectangle;
+       
         private static Rectangle staticRectangle;
         public static List<Terrain1> listTerrain = new List<Terrain1>(new Terrain1[100]);
         private Color color;
@@ -69,8 +68,10 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain.Insert(22, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 278, 200, 90)));
             //churge
             listTerrain.Insert(23, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 282, 200, 190)));
+            //construction
 
-
+            listTerrain.Insert(24, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2300, 340, 200, 90)));
+            listTerrain.Insert(25, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2402, 300, 200, 100)));
 
         }
 
@@ -80,14 +81,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < 26; i++)
             {
                 if(i!=17 && i!=16 && i != 18)
                 spriteBatch.Draw(listTerrain[i].Texture, listTerrain[i].Rectangle, Color.White);
             }
 
 
-            if (/*Ecir.cameraMove.Intersects(listTerrain[15].Rectangle) ||*/ Ecir.cameraMove.X>=1877 && Ecir.cameraMove.Y>=282 && Ecir.cameraMove.X<=2100)
+            if (Ecir.cameraMove.X>=1877 && Ecir.cameraMove.Y>=282 && Ecir.cameraMove.X<=2100)
             {
                 color = Color.Transparent;
             }
@@ -127,6 +128,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain[21].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
             listTerrain[22].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
             listTerrain[23].Texture = Content.Load<Texture2D>("insideChurch");
+            listTerrain[24].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[25].Texture = Content.Load<Texture2D>("terrain1");
 
         }
 

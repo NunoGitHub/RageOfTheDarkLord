@@ -32,21 +32,23 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
            
             listSpikesTrap.Insert(0, new SpikesTrap(new Texture2D(graphics.GraphicsDevice, 100, 100), new Rectangle(680, 480, 50, 30)));
             listSpikesTrap.Insert(1, new SpikesTrap(new Texture2D(graphics.GraphicsDevice, 100, 100), new Rectangle(1445, 470, 50, 30)));
-
+            listSpikesTrap.Insert(2, new SpikesTrap(new Texture2D(graphics.GraphicsDevice, 100, 100), new Rectangle(2300, 310, 50, 30)));
+            listSpikesTrap.Insert(3, new SpikesTrap(new Texture2D(graphics.GraphicsDevice, 100, 100), new Rectangle(2350, 310, 50, 30)));
         }
 
         public void Draw(SpriteBatch spriteBatch) {
+            for (int i = 0; i < 4; i++) {
+                spriteBatch.Draw(listSpikesTrap[i].Texture, listSpikesTrap[i].Rectangle, Color.White);
+            }
            
-            spriteBatch.Draw(listSpikesTrap[0].Texture, listSpikesTrap[0].Rectangle, Color.White);
-            spriteBatch.Draw(listSpikesTrap[1].Texture, listSpikesTrap[1].Rectangle, Color.White);
-
-
-
+       
         }
         public void LoadContent(ContentManager Content) {
+            for (int i = 0; i < 4; i++)
+            {
+                listSpikesTrap[i].Texture = Content.Load<Texture2D>("spikes");
+            }
 
-            listSpikesTrap[0].Texture = Content.Load<Texture2D>("spikes");
-            listSpikesTrap[1].Texture = Content.Load<Texture2D>("spikes");
         }
 
 
