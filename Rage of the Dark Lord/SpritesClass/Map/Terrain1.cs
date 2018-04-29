@@ -67,6 +67,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain.Insert(20, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 390, 200, 90)));
             listTerrain.Insert(21, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 320, 200, 90)));
             listTerrain.Insert(22, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2100, 278, 200, 90)));
+            //churge
+            listTerrain.Insert(23, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1900, 282, 200, 190)));
 
 
 
@@ -78,7 +80,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < 24; i++)
             {
                 if(i!=17 && i!=16 && i != 18)
                 spriteBatch.Draw(listTerrain[i].Texture, listTerrain[i].Rectangle, Color.White);
@@ -124,6 +126,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain[20].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
             listTerrain[21].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
             listTerrain[22].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[23].Texture = Content.Load<Texture2D>("insideChurch");
 
         }
 
