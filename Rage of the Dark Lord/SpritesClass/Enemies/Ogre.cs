@@ -179,8 +179,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             
         }
         public Rectangle DrawBarLife(int index) {
-        if (index == 0) return new Rectangle(listOgre[0].Rectangle.X-3, listOgre[0].Rectangle.Y - 10, (int)(listOgre[0].Life * 0.2), 5);
-        return Rectangle;
+        if (index == 0) return new Rectangle(listOgre[0].Rectangle.X-3, listOgre[0].Rectangle.Y - 15, (int)(listOgre[0].Life * 0.2), 5);
+        return Rectangle; 
 
         }
         public void UpdateTime(double deltaTime)//contador de segundos

@@ -67,7 +67,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
 
         public void EcirMove(int velocityX, int velocityY) {
 
-           
+            if (this.Rectangle.Intersects(Terrain1.listTerrain[28].Rectangle) && Keyboard.GetState().IsKeyDown(Keys.Up) == false) this.Rectangle = new Rectangle(this.Rectangle.X, Terrain1.listTerrain[28].Rectangle.Y-50, this.Rectangle.Width, this.Rectangle.Height);
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right) && lateralColision==false)
             {
@@ -143,7 +143,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
         {
             if (colision == true)
             {
-                for (int i = 0; i < 26; i++)
+                for (int i = 0; i < 29; i++)
                 {
                     if ( i != 13 || i != 15 || i != 18 || i != 16 || i != 17)
                     {

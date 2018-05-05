@@ -110,6 +110,8 @@ namespace Rage_of_the_Dark_Lord
             stairs.Update();
             ogre.Update();
             ogre.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
+            terrain1.Update();
+
 
 
             if (zombie != null)
