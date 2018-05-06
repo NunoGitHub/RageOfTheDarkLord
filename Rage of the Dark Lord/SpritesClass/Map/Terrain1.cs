@@ -76,11 +76,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain.Insert(26, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2702, 300, 150, 70)));
             listTerrain.Insert(27, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2946, 300, 150, 70)));
             listTerrain.Insert(28, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(3146, 300, 150, 70)));
-            
+            listTerrain.Insert(29, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(3410, 146, 200, 90)));
+            listTerrain.Insert(30, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(3410, 55, 200, 100)));
+           
+
         }
         public void Move() {
             
-            if (listTerrain[28].Rectangle.Y <= 90) vel=1;
+            if (listTerrain[28].Rectangle.Y <= 50) vel=1;
             if ( listTerrain[28].Rectangle.Y >= 300) vel=-1;
                 listTerrain[28].Rectangle = new Rectangle(listTerrain[28].Rectangle.X, listTerrain[28].Rectangle.Y + vel, listTerrain[28].Rectangle.Width, listTerrain[28].Rectangle.Height);
         }
@@ -95,7 +98,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < 29; i++)
+            for (int i = 0; i < 31; i++)
             {
                 if(i!=17 && i!=16 && i != 18)
                 spriteBatch.Draw(listTerrain[i].Texture, listTerrain[i].Rectangle, Color.White);
@@ -147,6 +150,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain[26].Texture = Content.Load<Texture2D>("floatTerrain");
             listTerrain[27].Texture = Content.Load<Texture2D>("floatTerrain");
             listTerrain[28].Texture = Content.Load<Texture2D>("floatTerrain");
+            listTerrain[29].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            listTerrain[30].Texture = Content.Load<Texture2D>("terrain1");
 
 
         }
