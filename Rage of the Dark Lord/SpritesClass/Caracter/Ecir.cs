@@ -143,7 +143,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
         {
             if (colision == true)
             {
-                for (int i = 0; i < 31; i++)
+                for (int i = 0; i < 41; i++)
                 {
                     if ( i != 13 || i != 15 || i != 18 || i != 16 || i != 17)
                     {
@@ -203,6 +203,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             Rectangle lateralTerrain1_27_1 = new Rectangle(3096, 302, 0, 70);
             Rectangle lateralTerrain1_28 = new Rectangle(Terrain1.listTerrain[28].Rectangle.X-8, Terrain1.listTerrain[28].Rectangle.Y+4, 0, 70);
             Rectangle lateralTerrain1_28_1 = new Rectangle(Terrain1.listTerrain[28].Rectangle.X +150, Terrain1.listTerrain[28].Rectangle.Y+4, 0, 70);
+            Rectangle lateralTerrain1_29 = new Rectangle(3400, 59, 0, 400);
             if (this.Rectangle.Intersects(lateralTerrain1_1))EcirVelocity(2, 0);/* this.Rectangle.X<=198 && this.Rectangle.X>=194 && this.Rectangle.Y>=481)*/
             if (this.Rectangle.Intersects(lateralTerrain1_4)) EcirVelocity(-2, 0);/*this.Rectangle.X>=570 && this.Rectangle.X<=575 && this.Rectangle.Y>=481*/
             if(this.Rectangle.Intersects(lateralTerrain1_7)) EcirVelocity(-2,0);
@@ -219,6 +220,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             if (this.Rectangle.Intersects(lateralTerrain1_27_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); }
             if (this.Rectangle.Intersects(lateralTerrain1_28)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); }
             if (this.Rectangle.Intersects(lateralTerrain1_28_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); }
+            if (this.Rectangle.Intersects(lateralTerrain1_29)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); }
 
         }
 
