@@ -51,24 +51,19 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (listOgre[0] != null)
-            {
-                //spriteBatch.Draw(listOgre[0].Texture, listOgre[0].Rectangle, listOgre[0].OgreColor);
-                spriteBatch.Draw(listOgre[0].Texture, listOgre[0].Rectangle, null, listOgre[0].OgreColor, 0, new Vector2(listOgre[0].Rectangle.Width / 2, listOgre[0].Rectangle.Height / 2), listOgre[0].SpriteEffects, 0f);
-                spriteBatch.Draw(OgreBarLife, DrawBarLife(0), listOgre[0].Color);
-            }
-            if (listOgre[1] != null)
-            {
-                //spriteBatch.Draw(listOgre[0].Texture, listOgre[0].Rectangle, listOgre[0].OgreColor);
-                spriteBatch.Draw(listOgre[1].Texture, listOgre[1].Rectangle, null, listOgre[1].OgreColor, 0, new Vector2(listOgre[1].Rectangle.Width / 2, listOgre[1].Rectangle.Height / 2), listOgre[1].SpriteEffects, 0f);
-                spriteBatch.Draw(OgreBarLife, DrawBarLife(1), listOgre[1].Color);
+            for (int i = 0; i < 2; i++) {
+                if (listOgre[i] != null) {
+                    spriteBatch.Draw(listOgre[i].Texture, listOgre[i].Rectangle, null, listOgre[i].OgreColor, 0, new Vector2(listOgre[i].Rectangle.Width / 2, listOgre[i].Rectangle.Height / 2), listOgre[i].SpriteEffects, 0f);
+                    spriteBatch.Draw(OgreBarLife, DrawBarLife(i), listOgre[i].Color);
+                }
+
             }
         }        
         public void LoadContent(ContentManager Content)
         {
-
-            listOgre[0].Texture = Content.Load<Texture2D>("Ogre");
-            listOgre[1].Texture = Content.Load<Texture2D>("Ogre");
+            for (int i = 0; i < 2; i++) {
+                listOgre[i].Texture = Content.Load<Texture2D>("Ogre");
+            }
 
         }
 
@@ -194,6 +189,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             
         }
         public Rectangle DrawBarLife(int index) {
+            
         if (index == 0) return new Rectangle(listOgre[0].Rectangle.X-3, listOgre[0].Rectangle.Y - 15, (int)(listOgre[0].Life * 0.2), 5);
             if (index == 1) return new Rectangle(listOgre[1].Rectangle.X - 3, listOgre[1].Rectangle.Y - 15, (int)(listOgre[1].Life * 0.2), 5);
             return Rectangle; 

@@ -143,11 +143,11 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
         {
             if (colision == true)
             {
-                for (int i = 0; i < 41; i++)
+                for (int i = 0; i < 59; i++)
                 {
                     if ( i != 13 || i != 15 || i != 18 || i != 16 || i != 17)
                     {
-                        colision = true;
+                        colision = true;//não colide com estes indices do terreno
                     }
                     else { colision = false; }
                    
@@ -390,16 +390,21 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
         }
 
         public Rectangle BarLifeEcir() {//barra de vida do ecir
-            if (this.Rectangle.X <= (740 / 2) - 190 && barAlwaysMove==false)
+            if (this.Rectangle.X <= (740 / 2) - 190 && barAlwaysMove==false )
             {
                 return new Rectangle(-335, 210, life, 15);
             }
-            else
+            if (this.Rectangle.X >= (740 / 2) - 190 && this.Rectangle.X <= 3832)
             {
                 barAlwaysMove = true;
                 return new Rectangle(this.Rectangle.X - 515, this.Rectangle.Y - 241, life, 15);
             }
-     
+            if (this.Rectangle.X >= 3832) return new Rectangle(3319, -235, life, 15);
+            else {
+                barAlwaysMove = true;
+                return new Rectangle(this.Rectangle.X - 515, this.Rectangle.Y - 241, life, 15);
+            }
+
         }
         public Color EcirColor() { return color;}
         public void UpdateTime(double deltaTime)//contador de segundos

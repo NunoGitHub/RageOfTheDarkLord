@@ -47,14 +47,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             listHollowKnight.Insert(0, new HollowKnight(new Rectangle(840, 405, 65, 65), new Texture2D(graphics.GraphicsDevice, 50, 50),2,1,200,Color.Transparent,Color.White, SpriteEffects.FlipHorizontally));
             HollowKnightBarLife = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             HollowKnightBarLife.SetData(new Color[] { Color.Red });
-
             listHollowKnight.Insert(1, new HollowKnight(new Rectangle(1498, 405, 65, 65), new Texture2D(graphics.GraphicsDevice, 50, 50), 2, 1, 200,Color.Transparent,Color.White, SpriteEffects.FlipHorizontally));
             listHollowKnight.Insert(2, new HollowKnight(new Rectangle(2396, 251, 65, 65), new Texture2D(graphics.GraphicsDevice, 50, 50), 2, 1, 200, Color.Transparent, Color.White, SpriteEffects.FlipHorizontally));
+            listHollowKnight.Insert(3, new HollowKnight(new Rectangle(3755, 5, 65, 65), new Texture2D(graphics.GraphicsDevice, 50, 50), 2, 1, 200, Color.Transparent, Color.White, SpriteEffects.FlipHorizontally));
 
         }
         public void Draw(SpriteBatch spriteBatch) { 
 
-            for(int i=0; i<3; i++)
+            for(int i=0; i<4; i++)
             {
                 if (listHollowKnight[i] != null)
                 {
@@ -65,7 +65,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
           
         }
         public void LoadContent(ContentManager Content) {
-            for(int i=0; i < 3; i++)
+            for(int i=0; i < 4; i++)
             {
                 listHollowKnight[i].Texture = Content.Load<Texture2D>("HollowKnight");
      
@@ -94,6 +94,12 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                 if (listHollowKnight[2].Rectangle.X >= 2565) { listHollowKnight[2].Direction = -1; listHollowKnight[2].SpriteEffects = SpriteEffects.None; }
                 listHollowKnight[2].Rectangle = new Rectangle(listHollowKnight[2].Rectangle.X + (listHollowKnight[2].VelocityX * listHollowKnight[2].Direction), listHollowKnight[2].Rectangle.Y, listHollowKnight[2].Rectangle.Width, listHollowKnight[2].Rectangle.Height);
             }
+            if (listHollowKnight[3] != null)
+            {
+                if (listHollowKnight[3].Rectangle.X <= 3400) { listHollowKnight[3].Direction = 1; listHollowKnight[3].SpriteEffects = SpriteEffects.FlipHorizontally; }
+                if (listHollowKnight[3].Rectangle.X >= 3755) { listHollowKnight[3].Direction = -1; listHollowKnight[3].SpriteEffects = SpriteEffects.None; }
+                listHollowKnight[3].Rectangle = new Rectangle(listHollowKnight[3].Rectangle.X + (listHollowKnight[3].VelocityX * listHollowKnight[3].Direction), listHollowKnight[3].Rectangle.Y, listHollowKnight[3].Rectangle.Width, listHollowKnight[3].Rectangle.Height);
+            }
 
         }
 
@@ -102,6 +108,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             if (Ecir.cameraMove.X >= 820 && Ecir.cameraMove.X <= 1228) index = 0;//define os indices do hollow knight  num determinado intervalo de distancia
             if (Ecir.cameraMove.X >= 1498 && Ecir.cameraMove.X <= 1826) index = 1;
             if (Ecir.cameraMove.X >= 2396 && Ecir.cameraMove.X <= 2565) index = 2;
+            if (Ecir.cameraMove.X >= 3400 && Ecir.cameraMove.X <= 3755) index = 3;
             if (listHollowKnight[index] != null)
             {
                 hollowKnightCol = new Rectangle(listHollowKnight[index].Rectangle.X - 60, listHollowKnight[index].Rectangle.Y - 25, 150, 75);//area de colisão de ataque do ecir
@@ -178,6 +185,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             if(index==0) return new Rectangle(listHollowKnight[0].Rectangle.X + 7, listHollowKnight[0].Rectangle.Y - 10, (int)(listHollowKnight[0].Life * 0.3), 5);
             if (index == 1) return new Rectangle(listHollowKnight[1].Rectangle.X + 7, listHollowKnight[1].Rectangle.Y - 10, (int)(listHollowKnight[1].Life * 0.3), 5);
             if (index == 2) return new Rectangle(listHollowKnight[2].Rectangle.X + 7, listHollowKnight[2].Rectangle.Y - 10, (int)(listHollowKnight[2].Life * 0.3), 5);
+            if (index == 3) return new Rectangle(listHollowKnight[3].Rectangle.X + 7, listHollowKnight[3].Rectangle.Y - 10, (int)(listHollowKnight[3].Life * 0.3), 5);
 
             return Rectangle;
         }
