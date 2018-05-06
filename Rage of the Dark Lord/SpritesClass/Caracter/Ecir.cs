@@ -212,15 +212,15 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             if (this.Rectangle.Intersects(lateralTerrain1_13)) EcirVelocity(-2, 0);
             if (this.Rectangle.Intersects(lateralTerrain1_20)) EcirVelocity(-2, 0);
             if (this.Rectangle.Intersects(lateralTerrain1_21)) EcirVelocity(2, 0);
-            if (this.Rectangle.Intersects(lateralTerrain1_25_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); }
+            if (this.Rectangle.Intersects(lateralTerrain1_25_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); clickedJump=true; }
             if (this.Rectangle.Intersects(lateralTerrain1_25)) EcirVelocity(-2, 0);        
-            if (this.Rectangle.Intersects(lateralTerrain1_26)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); }
-            if (this.Rectangle.Intersects(lateralTerrain1_26_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); }
-            if (this.Rectangle.Intersects(lateralTerrain1_27)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); }
-            if (this.Rectangle.Intersects(lateralTerrain1_27_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); }
-            if (this.Rectangle.Intersects(lateralTerrain1_28)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); }
-            if (this.Rectangle.Intersects(lateralTerrain1_28_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); }
-            if (this.Rectangle.Intersects(lateralTerrain1_29)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); }
+            if (this.Rectangle.Intersects(lateralTerrain1_26)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); clickedJump = true; }
+            if (this.Rectangle.Intersects(lateralTerrain1_26_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); clickedJump = true; }
+            if (this.Rectangle.Intersects(lateralTerrain1_27)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); clickedJump = true; }
+            if (this.Rectangle.Intersects(lateralTerrain1_27_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); clickedJump = true; }
+            if (this.Rectangle.Intersects(lateralTerrain1_28)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); clickedJump = true; }
+            if (this.Rectangle.Intersects(lateralTerrain1_28_1)) { EcirVelocity(2, 0); Gravity(1, 1.5f); clickedJump = true; }
+            if (this.Rectangle.Intersects(lateralTerrain1_29)) { EcirVelocity(-2, 0); Gravity(1, 1.5f); clickedJump = true; }
 
         }
 
