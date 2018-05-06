@@ -102,7 +102,7 @@ namespace Rage_of_the_Dark_Lord
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            ecir.EcirMove(2, 2);
+            if (!ecir.EcirDestroy()) ecir.EcirMove(2, 2);
             ecir.TerrainColisions();
             ecir.EcirLife();
             hollowKnight.Update();
@@ -147,7 +147,7 @@ namespace Rage_of_the_Dark_Lord
             hollowKnight.Draw(spriteBatch);
             stairs.Draw(spriteBatch);
             ogre.Draw(spriteBatch);
-           /* if (!ecir.EcirDestroy())*/ spriteBatch.Draw(ecir.Texture, ecir.Rectangle, ecir.EcirColor());
+           if (!ecir.EcirDestroy()) spriteBatch.Draw(ecir.Texture, ecir.Rectangle, ecir.EcirColor());
             //  if(zombie!=null)if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, zombie.ZombieColor()); else { zombie = null; }// se o zombie não for destruido e levar dano muda de cor quando a vida chagar a 0 é destruido
             if (zombie != null) if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, null, zombie.ZombieColor(), 0, new Vector2(zombie.Rectangle.Width / 2, zombie.Rectangle.Height / 2),zombie.SpriteEffect, 0f);
 

@@ -41,8 +41,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
        public void InsertTerrain(GraphicsDeviceManager graphics)
         {
             listTerrain.Insert(0, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(200, 530, 200, 100)));
-            listTerrain.Insert(1, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(0, 600 - 100, 200, 100)));
-            listTerrain.Insert(2, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(-200, 600-100, 200, 100)));
+            listTerrain.Insert(1, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(0, 500, 200, 100)));
+            listTerrain.Insert(2, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(-200, 500, 200, 100)));
             listTerrain.Insert(3, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(400, 530, 200, 100)));
             listTerrain.Insert(4, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(600, 500, 200, 100)));
             listTerrain.Insert(5, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(800, 500, 200, 100)));
@@ -106,6 +106,38 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain.Insert(56, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(4200, 266, 200, 60)));
             listTerrain.Insert(57, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(4200, 326, 200, 60)));
             listTerrain.Insert(58, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(4200, 386, 200, 60)));
+            //reconstruçao 1º parte
+            listTerrain.Insert(59, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(-400, 600, 200, 60)));
+            listTerrain.Insert(60, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(-400, 540, 200, 60)));
+            listTerrain.Insert(61, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(-400, 500, 200, 100)));
+            listTerrain.Insert(62, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(-200, 600, 200, 60)));
+            listTerrain.Insert(63, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(-100, 600, 200, 60)));
+            listTerrain.Insert(64, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(0, 600, 200, 60)));
+            listTerrain.Insert(65, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(600, 600, 200, 60)));
+            listTerrain.Insert(66, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(800, 600, 200, 60)));
+            listTerrain.Insert(67, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1000, 600, 200, 60)));
+            listTerrain.Insert(68, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1200, 550, 200, 60)));
+            listTerrain.Insert(69, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1400, 550, 200, 60)));
+            listTerrain.Insert(70, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1600, 550, 200, 60)));
+            listTerrain.Insert(71, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1800, 550, 200, 60)));
+            listTerrain.Insert(72, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2000, 550, 200, 60)));
+            listTerrain.Insert(73, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2200, 550, 200, 60)));
+            listTerrain.Insert(74, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2300, 450, 200, 60)));//
+            listTerrain.Insert(75, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2300, 390, 200, 60)));
+            listTerrain.Insert(76, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2300, 510, 200, 60)));
+            listTerrain.Insert(77, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2300, 550, 200, 60)));
+            listTerrain.Insert(78, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2402, 390, 200, 60)));//
+            listTerrain.Insert(79, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2402, 450, 200, 60)));
+            listTerrain.Insert(80, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2402, 510, 200, 60)));
+            listTerrain.Insert(81, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(2402, 550, 200, 60)));
+
+            //listTerrain.Insert(68, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1200, 600, 200, 60)));
+            /*listTerrain.Insert(69, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1400, 600, 200, 60)));
+            listTerrain.Insert(70, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(1600, 600, 200, 60)));
+            /*listTerrain.Insert(69, new Terrain1(new Texture2D(graphics.GraphicsDevice, 400, 400), new Rectangle(600, 1400, 200, 60)));*/
+
+
+
 
 
 
@@ -127,7 +159,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < 59; i++)
+            for (int i = 0; i < 82; i++)
             {
                 if(i!=17 && i!=16 && i != 18)
                 spriteBatch.Draw(listTerrain[i].Texture, listTerrain[i].Rectangle, Color.White);
@@ -209,6 +241,41 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
             listTerrain[56].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
             listTerrain[57].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
             listTerrain[58].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[59].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[60].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[61].Texture = Content.Load<Texture2D>("terrain1");
+            listTerrain[62].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[63].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+           listTerrain[64].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+           listTerrain[65].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[66].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[67].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[68].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[69].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[70].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[71].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[72].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[73].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[74].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[75].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[76].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[77].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[78].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[79].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[80].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[81].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+           
+            //listTerrain[68].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            /*listTerrain[69].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[70].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");*/
+            /*listTerrain[66].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[67].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[68].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+            listTerrain[69].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");*/
+
+
+
+
 
 
 

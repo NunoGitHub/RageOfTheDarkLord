@@ -39,9 +39,9 @@ namespace Rage_of_the_Dark_Lord
 
                 cameraAllwaysMove = true;
             }
-            if (cameraAllwaysMove == true && Ecir.cameraMove.X <= (740 / 2) - 160) {
+           /* if (cameraAllwaysMove == true && Ecir.cameraMove.X <= (740 / 2) - 160) {
                 translationMatrix = Matrix.CreateTranslation(new Vector3(-1 * (Ecir.cameraMove.X) + 370 - 190, -1 * (Ecir.cameraMove.Y) + 451, 0));
-            }
+            }*/
             Matrix rotationMatrix = Matrix.CreateRotationZ(0);
             Matrix scaleMatrix = Matrix.CreateScale(new Vector3(1.9f, 1.9f, 0));//Zoom//1,14//1.9
             Matrix originMatrix = Matrix.CreateTranslation(new Vector3((1280/2),-390, 0));//200,0 //<-metade do viewport
