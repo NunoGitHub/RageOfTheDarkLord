@@ -367,7 +367,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
         }
 
         public bool EcirDestroy() {//se a vida do Ecir chegar a 0 passa a true se for diferente de 0 é falso
-            if (life <= 0) {
+
+            if (life <= 0 ||this.Rectangle.Y>=548) {
 
                 return true;
             }

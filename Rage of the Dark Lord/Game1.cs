@@ -102,9 +102,12 @@ namespace Rage_of_the_Dark_Lord
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            if (!ecir.EcirDestroy()) ecir.EcirMove(2, 2);
-            ecir.TerrainColisions();
-            ecir.EcirLife();
+            if (!ecir.EcirDestroy())
+            {
+                ecir.EcirMove(2, 2);
+                ecir.TerrainColisions();
+                ecir.EcirLife();
+            }
             hollowKnight.Update();
             ecir.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
             stairs.Update();
