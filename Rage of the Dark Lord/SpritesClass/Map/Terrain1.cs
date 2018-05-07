@@ -165,8 +165,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
                 spriteBatch.Draw(listTerrain[i].Texture, listTerrain[i].Rectangle, Color.White);
             }
 
-
-            if (Ecir.cameraMove.X>=1877 && Ecir.cameraMove.Y>=282 && Ecir.cameraMove.X<=2100)
+            if (Ecir.cameraMove.X>=1877 && Ecir.cameraMove.Y>=282 && Ecir.cameraMove.X<=2100)//faz desaparecer o terrain e aparece o mosteiro
             {
                 color = Color.Transparent;
             }
