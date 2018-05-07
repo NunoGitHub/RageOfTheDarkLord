@@ -13,7 +13,7 @@ namespace Rage_of_the_Dark_Lord
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
+        GraphicsDeviceManager graphics;//IIII
         GraphicsDevice graphicsDevice;
         SpriteBatch spriteBatch;
         Ecir ecir= new Ecir();
