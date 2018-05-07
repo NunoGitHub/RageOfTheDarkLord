@@ -153,17 +153,17 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     listHollowKnight[index].Color = Color.Red;//faz aparecer a barra de vida
                     listHollowKnight[index].KnightColor = Color.Red;//cor do hollow knight
                 }
-                if (time >= 1 && listHollowKnight[index].Life == 150)
+                if (time >= 0.5 && listHollowKnight[index].Life == 150)
                 {
                     listHollowKnight[index].Color = Color.Transparent;
                     listHollowKnight[index].KnightColor = Color.White;
                 }
-                if (time >= 0 && listHollowKnight[index].Life == 100 && time <= 1)
+                if (time >= 0.5 && listHollowKnight[index].Life == 100 && time <= 1)
                 {
                     listHollowKnight[index].Color = Color.Red;
                     listHollowKnight[index].KnightColor=Color.Red;
                 }
-                if (time >= 1 && listHollowKnight[index].Life == 100)
+                if (time >= 0.5 && listHollowKnight[index].Life == 100)
                 {
                     listHollowKnight[index].Color = Color.Transparent;
                     listHollowKnight[index].KnightColor = Color.White;
@@ -173,7 +173,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     listHollowKnight[index].Color = Color.Red;
                     listHollowKnight[index].KnightColor = Color.Red;
                 }
-                if (time >= 1 && listHollowKnight[index].Life == 50)
+                if (time >= 0.5 && listHollowKnight[index].Life == 50)
                 {
                     listHollowKnight[index].Color = Color.Transparent;
                     listHollowKnight[index].KnightColor = Color.White;

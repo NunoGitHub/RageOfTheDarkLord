@@ -255,14 +255,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                     killTime = true;
                     countTime = true;
                     HollowKnight.listHollowKnight[HollowKnight.index].VelocityX = 0;
-                    if (time >= 1 && takeLife==true)// Hollow knight para e ataca
+                    if (time >= 0.6 && takeLife==true)// Hollow knight para e ataca
                     {
                         color = Color.Red;
                         life = life - 40;
                         takeLife = false;
 
                     }
-                    if (time >= 1.5)
+                    if (time >= 1.1)
                     {//Hollow knight continua a andar depois do ataque
                         HollowKnight.listHollowKnight[HollowKnight.index].VelocityX = 2;
                         hollowKnightTouch = false;
