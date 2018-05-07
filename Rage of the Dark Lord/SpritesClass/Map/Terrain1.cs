@@ -182,103 +182,57 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
 
         public void LoadContent(ContentManager Content)
         {
-            listTerrain[0].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[1].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[2].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[3].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[4].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[5].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[6].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[7].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[8].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[9].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[10].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
-            listTerrain[11].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[12].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[13].Texture = Content.Load<Texture2D>("topTerrain");
-            listTerrain[14].Texture = Content.Load<Texture2D>("topTerrain");
-            listTerrain[15].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[16].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
-            listTerrain[17].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
-            listTerrain[18].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
-            listTerrain[19].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[20].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
-            listTerrain[21].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
-            listTerrain[22].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+            //terrain1
+            for (int i = 0; i < 82; i++) {
+
+                if(i!=10 || i<26 && i>28 || i<13 && i>14 || i < 16 && i > 18 || i < 20 && i > 24 || i < 26 && i > 28 || i < 30 && i > 34 || i < 36 && i > 40 || i < 42 && i > 46 || i < 48 && i > 52 || i < 54 && i > 60 || i < 62 && i > 82 )
+                {
+                    listTerrain[i].Texture = Content.Load<Texture2D>("terrain1");
+                }
+
+            }
+            //underground terrain
+            for (int i = 0; i < 82; i++) {
+
+                if (i == 10 || i < 11 && i > 15 || i>=16 && i<=18 || i>=20 && i<=22 || i==24) {
+                    listTerrain[i].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
+                }
+
+            }
+            //top terrain
+            for (int i = 0; i < 82; i++)
+            {
+
+                if (i>=13 && i<=14)
+                {
+                    listTerrain[i].Texture = Content.Load<Texture2D>("topTerrain");
+                }
+
+            }
             listTerrain[23].Texture = Content.Load<Texture2D>("insideChurch");
-            listTerrain[24].Texture = Content.Load<Texture2D>("UnderGroudTerrain");
-            listTerrain[25].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[26].Texture = Content.Load<Texture2D>("floatTerrain");
-            listTerrain[27].Texture = Content.Load<Texture2D>("floatTerrain");
-            listTerrain[28].Texture = Content.Load<Texture2D>("floatTerrain");
-            listTerrain[29].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[30].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[31].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[32].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[33].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[34].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[35].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[36].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[37].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[38].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[39].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[40].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[41].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[42].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[43].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[44].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[45].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[46].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[47].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[48].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[49].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[50].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[51].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[52].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[53].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[54].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[55].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[56].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[57].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[58].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[59].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[60].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[61].Texture = Content.Load<Texture2D>("terrain1");
-            listTerrain[62].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[63].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-           listTerrain[64].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-           listTerrain[65].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[66].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[67].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[68].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[69].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[70].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[71].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[72].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[73].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[74].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[75].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[76].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[77].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[78].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[79].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[80].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[81].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-           
-            //listTerrain[68].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            /*listTerrain[69].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[70].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");*/
-            /*listTerrain[66].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[67].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[68].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
-            listTerrain[69].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");*/
 
+            // float terrain
+            for (int i = 0; i < 82; i++)
+            {
 
+                if (i>=26 && i<=28)
+                {
+                    listTerrain[i].Texture = Content.Load<Texture2D>("floatTerrain");
+                }
 
+            }
 
+            //undergroundterrain2
 
+            for (int i = 0; i < 82; i++)
+            {
 
+                if (i>=30 && i<=34 || i >= 36 && i <= 40 || i >= 42 && i <= 46 || i >= 48 && i <= 52 || i >= 54 && i <= 60 || i >= 62 && i <= 81   )
+                {
+                    listTerrain[i].Texture = Content.Load<Texture2D>("UnderGroundTerrain2");
+                }
 
+            }
 
         }
 
