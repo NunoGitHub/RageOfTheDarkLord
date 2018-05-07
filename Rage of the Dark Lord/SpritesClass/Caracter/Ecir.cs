@@ -170,17 +170,19 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                 if (this.Rectangle.Intersects(SpikesTrap.listSpikesTrap[i].Rectangle) == true)
                 { indexSpike = i; }
             }
+            
 
 
             if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[indexTerrain].Rectangle)==true )
             {
-               
+
                 clickedJump = false;
+               /* if (Keyboard.GetState().IsKeyDown(Keys.Up)==false)
+                    this.Rectangle = new Rectangle(this.Rectangle.X, Terrain1.listTerrain[indexTerrain].Rectangle.Y - 43, this.Rectangle.Width, this.Rectangle.Height);*/
                 Gravity(0, 0);
                 reverse = false;
                 jump = false;
                 jumpHeight = 135;
-              
             }
            else {
                 clickedJump = true;

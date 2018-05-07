@@ -108,7 +108,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             if (Ecir.cameraMove.X >= 820 && Ecir.cameraMove.X <= 1228) index = 0;//define os indices do hollow knight  num determinado intervalo de distancia
             if (Ecir.cameraMove.X >= 1498 && Ecir.cameraMove.X <= 1826) index = 1;
             if (Ecir.cameraMove.X >= 2396 && Ecir.cameraMove.X <= 2565) index = 2;
-            if (Ecir.cameraMove.X >= 3400 && Ecir.cameraMove.X <= 3755) index = 3;
+            if (Ecir.cameraMove.X >= 3380 && Ecir.cameraMove.X <= 3755) index = 3;
             if (listHollowKnight[index] != null)
             {
                 hollowKnightCol = new Rectangle(listHollowKnight[index].Rectangle.X - 60, listHollowKnight[index].Rectangle.Y - 25, 150, 75);//area de colisão de ataque do ecir
