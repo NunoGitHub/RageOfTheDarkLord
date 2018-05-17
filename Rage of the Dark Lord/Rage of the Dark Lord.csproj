@@ -49,6 +49,7 @@
     <Compile Include="SpritesClass\Enemies\HollowKnight.cs" />
     <Compile Include="SpritesClass\Enemies\Ogre.cs" />
     <Compile Include="SpritesClass\Enemies\Zombie.cs" />
+    <Compile Include="SpritesClass\Enemies\zombieSkeleton.cs" />
     <Compile Include="SpritesClass\Map\SpikesTrap.cs" />
     <Compile Include="SpritesClass\Map\Stairs.cs" />
     <Compile Include="SpritesClass\Map\Terrain1.cs" />

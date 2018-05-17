@@ -13,13 +13,14 @@ namespace Rage_of_the_Dark_Lord
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;//IIII
+        GraphicsDeviceManager graphics;
         GraphicsDevice graphicsDevice;
         SpriteBatch spriteBatch;
         Ecir ecir= new Ecir();
         Zombie zombie = new Zombie();
         Stairs stairs= new Stairs();
         Ogre ogre = new Ogre();
+        zombieSkeleton skeleton = new zombieSkeleton();
         Camera camera;
         Terrain1 terrain1= new Terrain1();
         HollowKnight hollowKnight = new HollowKnight();
@@ -51,6 +52,7 @@ namespace Rage_of_the_Dark_Lord
             ecir = new Ecir(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(-200, 400, 30, 50),new Vector2(1,1), new Vector2(1, 1));
             zombie = new Zombie(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(400, 490, 30, 50), 1, 1,SpriteEffects.None);
             terrain1.InsertTerrain(graphics);
+            skeleton.Insert(graphics);
            
             hollowKnight.InsertHollowKnight(graphics);
             stairs.InsertStairs(graphics);
@@ -76,7 +78,7 @@ namespace Rage_of_the_Dark_Lord
             zombieBarLife = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             zombieBarLife.SetData(new Color[] { Color.Red });
             terrain1.LoadContent(this.Content);
-            
+            skeleton.LoadContent(this.Content);
             hollowKnight.LoadContent(this.Content);
             stairs.LoadContent(this.Content);
             ogre.LoadContent(this.Content);
@@ -114,6 +116,8 @@ namespace Rage_of_the_Dark_Lord
             ogre.Update();
             ogre.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
             terrain1.Update();
+            skeleton.Update();
+            skeleton.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds, gameTime.ElapsedGameTime.Milliseconds);
 
 
 
@@ -153,7 +157,7 @@ namespace Rage_of_the_Dark_Lord
            if (!ecir.EcirDestroy()) spriteBatch.Draw(ecir.Texture, ecir.Rectangle, ecir.EcirColor());
             //  if(zombie!=null)if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, zombie.ZombieColor()); else { zombie = null; }// se o zombie não for destruido e levar dano muda de cor quando a vida chagar a 0 é destruido
             if (zombie != null) if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, null, zombie.ZombieColor(), 0, new Vector2(zombie.Rectangle.Width / 2, zombie.Rectangle.Height / 2),zombie.SpriteEffect, 0f);
-
+            skeleton.Draw(spriteBatch);
 
 
             spriteBatch.End();
