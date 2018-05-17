@@ -19,6 +19,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public static Rectangle colzombieSkeleton,SkeletonAttackArea;
         private double time = 0;
         public double ms = 0;
+        double rot = 0;
         private Rectangle Rectangle { get; set; }
         private Texture2D Texture2D { get; set; }
         private int VelocityX { get; set; }
@@ -73,8 +74,11 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         }
         public void Move()
         {
-           /* double angle = Math.PI * 80 / 180.0;
-            double o = Math.Sin(angle) * 5;*/
+            double angle = Math.PI * 80 / 180.0;
+            double l=0;
+            rot += Math.Sin(angle);
+            if (rot > 5) rot = rot * -1;
+           // else { rot = rot * -1; }
             
             if (listzombieSkeleton[0] != null)  
             {
@@ -83,7 +87,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                  if (listzombieSkeleton[0].Rectangle.X >= 2870) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }*/
                 if (listzombieSkeleton[0].Rectangle.X <= -100) { listzombieSkeleton[0].Direction = 1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.None; }
                 if (listzombieSkeleton[0].Rectangle.X >= 100) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }
-                listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), listzombieSkeleton[0].Rectangle.Y+ (int)Math.Sin(ms)*5, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
+                listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), listzombieSkeleton[0].Rectangle.Y+ (int)rot, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
             }
           
 
