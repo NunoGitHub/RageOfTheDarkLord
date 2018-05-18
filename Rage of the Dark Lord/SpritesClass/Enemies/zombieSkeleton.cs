@@ -47,7 +47,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public void Insert(GraphicsDeviceManager graphics)
         {
             // listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(3900, 10, 50, 50), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
-            listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(-100, 440, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
+            listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(-100, 420, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
             zombieSkeletonBarLife = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             zombieSkeletonBarLife.SetData(new Color[] { Color.Red });
 
@@ -74,20 +74,23 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         }
         public void Move()
         {
-            double angle = Math.PI * 80 / 180.0;
-            double l=0;
+            double angle = Math.PI * 6 / 180.0;
             rot += Math.Sin(angle);
-            if (rot > 5) rot = rot * -1;
-           // else { rot = rot * -1; }
-            
+            if (rot > 3)
+            {
+              rot = rot * -1;
+            }if(rot<=-3 && listzombieSkeleton[0]!=null) listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), 451, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
+           
+
+
             if (listzombieSkeleton[0] != null)  
             {
               
-                /* if (listzombieSkeleton[0].Rectangle.X <= 2270) { listzombieSkeleton[0].Direction = 1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.None; }
-                 if (listzombieSkeleton[0].Rectangle.X >= 2870) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }*/
+              
                 if (listzombieSkeleton[0].Rectangle.X <= -100) { listzombieSkeleton[0].Direction = 1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.None; }
                 if (listzombieSkeleton[0].Rectangle.X >= 100) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }
-                listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), listzombieSkeleton[0].Rectangle.Y+ (int)rot, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
+                listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), listzombieSkeleton[0].Rectangle.Y+ (int)rot , listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
+               
             }
           
 
@@ -135,16 +138,6 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     listzombieSkeleton[index].BarColor = Color.Transparent;
                     listzombieSkeleton[index].SkeletonColor = Color.White;
                 }
-                /*if (time >= 0 && listzombieSkeleton[index].Life == 50 && time <= 1)
-                {
-                    listzombieSkeleton[index].BarColor = Color.Red;
-                    listzombieSkeleton[index].SkeletonColor = Color.Red;
-                }
-                if (time >= 1 && listzombieSkeleton[index].Life == 50)
-                {
-                    listzombieSkeleton[index].BarColor = Color.Transparent;
-                    listzombieSkeleton[index].SkeletonColor = Color.White;
-                }*/
                
             }
             
