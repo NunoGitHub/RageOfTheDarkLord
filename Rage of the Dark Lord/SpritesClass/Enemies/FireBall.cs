@@ -76,7 +76,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     if (ListFireBall[i].Rectangle.Intersects(zombieSkeleton.rectangleAttack) == false)//bola de fogo desaparece do jogo se sair do rectangleAttack
                         ListFireBall[i] = null;
                     if (ListFireBall[i] != null)
-                        if (Ecir.cameraMove.Intersects(ListFireBall[i].Rectangle))//tira vida ao ecir
+                        if (Ecir.cameraMove.Intersects(ListFireBall[i].Rectangle))//tira vida ao ecir, e a bola de fogo desaparece
                         {
                         Ecir.life = Ecir.life - 20;
                         ListFireBall[i] = null;
