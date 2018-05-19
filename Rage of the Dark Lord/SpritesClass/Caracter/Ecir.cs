@@ -152,7 +152,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                     else { colision = false; }
                    
                     if (this.Rectangle.Intersects(terrain1.ReturnTerrain()[i].Rectangle) == true) indexTerrain = i;
-                    Console.WriteLine("index="+i);
+                   
 
                 }
             }

@@ -20,7 +20,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         private double time = 0;
         public double ms = 0;
         double rot = 0;
-        private Rectangle Rectangle { get; set; }
+        
+        public Rectangle Rectangle { get; set; }
         private Texture2D Texture2D { get; set; }
         private int VelocityX { get; set; }
         private int VelocityY { get; set; }
@@ -41,6 +42,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             BarColor = barColor;
             SkeletonColor = skeletonColor;
             SpriteEffects = spriteEffects;
+            
 
         }
         public zombieSkeleton() { }
@@ -81,18 +83,19 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
               rot = rot * -1;
             }if(rot<=-3 && listzombieSkeleton[0]!=null) listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), 451, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
            
-
-
             if (listzombieSkeleton[0] != null)  
             {
-              
-              
+ 
                 if (listzombieSkeleton[0].Rectangle.X <= -100) { listzombieSkeleton[0].Direction = 1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.None; }
                 if (listzombieSkeleton[0].Rectangle.X >= 100) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }
                 listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), listzombieSkeleton[0].Rectangle.Y+ (int)rot , listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
                
             }
           
+        }
+        public void Attack() {
+
+
 
         }
         public void SkeletonLife()
@@ -160,7 +163,6 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             Move();
             SkeletonLife();
             SkeletonChangeColor();
-
 
         }
     }

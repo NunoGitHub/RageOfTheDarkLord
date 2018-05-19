@@ -46,6 +46,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpritesClass\Caracter\Ecir.cs" />
+    <Compile Include="SpritesClass\Enemies\FireBall.cs" />
     <Compile Include="SpritesClass\Enemies\HollowKnight.cs" />
     <Compile Include="SpritesClass\Enemies\Ogre.cs" />
     <Compile Include="SpritesClass\Enemies\Zombie.cs" />
