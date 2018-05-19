@@ -20,8 +20,6 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
        private Rectangle Rectangle { get; set; }
        private ContentManager content;
        private  double time = 0;
-        bool stopCount = true;
-
         public FireBall(Texture2D texture2D, Rectangle rectangle) {
             Texture2D = texture2D;
             Rectangle = rectangle; 
@@ -29,16 +27,15 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public FireBall() { }
 
         public void CreateFireBall(GraphicsDeviceManager graphics) {
-            if (Keyboard.GetState().IsKeyDown(Keys.M) && time>0.7) {
+            if (Ecir.cameraMove.Intersects(zombieSkeleton.rectangleAttack) && time>2.5 && zombieSkeleton.listzombieSkeleton[zombieSkeleton.index]!=null) {//se o ecir entrar dentro do rectangulo de atack aciona o contador de bolas de fogo que começa a dispara-las
                 time = 0;
                 count ++;
-                ListFireBall.Insert(count,new FireBall(new Texture2D(graphics.GraphicsDevice, 100, 100), new Rectangle(-200, 451, 10, 10)));
-                
+                ListFireBall.Insert(count,new FireBall(new Texture2D(graphics.GraphicsDevice, 100, 100), new Rectangle(zombieSkeleton.listzombieSkeleton[zombieSkeleton.index].Rectangle.X, zombieSkeleton.listzombieSkeleton[zombieSkeleton.index].Rectangle.Y, 10, 10)));    
              }
            
-            if (count > -1)
+            if (count > -1 && ListFireBall[count]!=null )
                 ListFireBall[count].Texture2D = content.Load<Texture2D>("fireBall");
-            Console.WriteLine("ecir X=" + Ecir.cameraMove.X + "Ecir y=" + Ecir.cameraMove.Y);
+            
         }
         public void LoadContent(ContentManager Content)
         {
@@ -47,20 +44,43 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            //spriteBatch.Draw(this.Texture2D, this.Rectangle, Color.White);
             if (count > -1)
                 for (int i = 0; i < count+1; i++)
-                {
+                {   if(ListFireBall[i]!=null)
                     spriteBatch.Draw(ListFireBall[i].Texture2D, ListFireBall[i].Rectangle, Color.White);
 
                 }
         }
-        public void Move() {
+        public void Move() {//bola de fogo persegue o ecir
             if (count > -1)
                 for (int i = 0; i < count+1; i++)
                 {
-                    ListFireBall[i].Rectangle = new Rectangle(ListFireBall[i].Rectangle.X + 1, ListFireBall[i].Rectangle.Y, ListFireBall[i].Rectangle.Width, ListFireBall[i].Rectangle.Height);
-
+                    if (ListFireBall[i] != null)
+                    {
+                        if (Ecir.cameraMove.X + 10 > ListFireBall[i].Rectangle.X)
+                            ListFireBall[i].Rectangle = new Rectangle(ListFireBall[i].Rectangle.X + 2, ListFireBall[i].Rectangle.Y, ListFireBall[i].Rectangle.Width, ListFireBall[i].Rectangle.Height);
+                        if (Ecir.cameraMove.X + 10 < ListFireBall[i].Rectangle.X)
+                            ListFireBall[i].Rectangle = new Rectangle(ListFireBall[i].Rectangle.X - 2, ListFireBall[i].Rectangle.Y, ListFireBall[i].Rectangle.Width, ListFireBall[i].Rectangle.Height);
+                        if (Ecir.cameraMove.Y + 20 > ListFireBall[i].Rectangle.Y)
+                            ListFireBall[i].Rectangle = new Rectangle(ListFireBall[i].Rectangle.X, ListFireBall[i].Rectangle.Y + 1, ListFireBall[i].Rectangle.Width, ListFireBall[i].Rectangle.Height);
+                        if (Ecir.cameraMove.Y + 20 < ListFireBall[i].Rectangle.Y)
+                            ListFireBall[i].Rectangle = new Rectangle(ListFireBall[i].Rectangle.X, ListFireBall[i].Rectangle.Y - 1, ListFireBall[i].Rectangle.Width, ListFireBall[i].Rectangle.Height);
+                    }
+                }
+        }
+        public void Destroy()
+        {
+            if (count > -1)
+                for (int i = 0; i < count + 1; i++)
+                {   if(ListFireBall[i]!=null)
+                    if (ListFireBall[i].Rectangle.Intersects(zombieSkeleton.rectangleAttack) == false)//bola de fogo desaparece do jogo se sair do rectangleAttack
+                        ListFireBall[i] = null;
+                    if (ListFireBall[i] != null)
+                        if (Ecir.cameraMove.Intersects(ListFireBall[i].Rectangle))//tira vida ao ecir
+                        {
+                        Ecir.life = Ecir.life - 20;
+                        ListFireBall[i] = null;
+                        }
                 }
         }
         public void UpdateTime(double deltaTime) {
@@ -71,6 +91,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public void Update() {
         
             Move();
+            Destroy();
         }
     }
 }

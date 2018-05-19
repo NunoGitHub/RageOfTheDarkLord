@@ -31,7 +31,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         {
             listStairs.Insert(0, new Stairs(new Rectangle(1842, 270, 150, 210), new Texture2D(graphics.GraphicsDevice, 100, 100)));
             listStairs.Insert(1, new Stairs(new Rectangle(1842, 176, 150, 210), new Texture2D(graphics.GraphicsDevice, 100, 100)));
-          //Y=-94
+          
         }
         public void Draw(SpriteBatch spriteBatch)
         {

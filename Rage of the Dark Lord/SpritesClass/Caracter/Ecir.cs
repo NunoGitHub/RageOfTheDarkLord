@@ -22,7 +22,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
         private bool reverse = false, hollowKnightTouch = true, dontJump=false, ogreTouch=true;
         int indexTerrain = 0, indexSpike, jumpHeight=135;
         public static Rectangle cameraMove;
-        int life  = 100;
+       public static int life  = 100;
         bool ZombieNotTouch = true, lateralColision=false, barAlwaysMove=false, ecirNotToutcSpike=true, killTime=false;
         public static bool directionPositive = false, directionNegative = false;
         Color color = Color.White;
@@ -359,6 +359,9 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                 }
                 
             }
+            //zombie sketleton takes ecir life
+            
+           
 
             //////////////////////////////////////////////
             //Ecir is in churche
@@ -367,6 +370,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
             
 
         }
+
 
         public bool EcirDestroy() {//se a vida do Ecir chegar a 0 passa a true se for diferente de 0 é falso
 
