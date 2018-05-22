@@ -49,7 +49,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public void Insert(GraphicsDeviceManager graphics)
         {
             
-            listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(-100, 420, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
+           // listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(-100, 420, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
+            listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(1650, 120, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
             zombieSkeletonBarLife = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             zombieSkeletonBarLife.SetData(new Color[] { Color.Red });
            // boxAttack = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
@@ -84,16 +85,26 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             if (rot > 3)
             {
               rot = rot * -1;
-            }if(rot<=-3 && listzombieSkeleton[0]!=null) listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), 451, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
-           
+
+            }if(rot<=-3 && listzombieSkeleton[0]!=null) listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), 150, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
+           // if (rot <= -3 && listzombieSkeleton[1] != null) listzombieSkeleton[1].Rectangle = new Rectangle(listzombieSkeleton[1].Rectangle.X + (listzombieSkeleton[1].VelocityX * listzombieSkeleton[1].Direction), 150, listzombieSkeleton[1].Rectangle.Width, listzombieSkeleton[1].Rectangle.Height);
+
+         /*   if (listzombieSkeleton[0] != null)
+            {
+                if (listzombieSkeleton[0].Rectangle.X <= -100) { listzombieSkeleton[0].Direction = 1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.None; }
+                if (listzombieSkeleton[0].Rectangle.X >= 100) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }
+                listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), listzombieSkeleton[0].Rectangle.Y + (int)rot, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
+            }*/
             if (listzombieSkeleton[0] != null)  
             {
  
-                if (listzombieSkeleton[0].Rectangle.X <= -100) { listzombieSkeleton[0].Direction = 1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.None; }
-                if (listzombieSkeleton[0].Rectangle.X >= 100) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }
+                if (listzombieSkeleton[0].Rectangle.X <= 1650) { listzombieSkeleton[0].Direction = 1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.None; }
+                if (listzombieSkeleton[0].Rectangle.X >= 2190) { listzombieSkeleton[0].Direction = -1; listzombieSkeleton[0].SpriteEffects = SpriteEffects.FlipHorizontally; }
+               
                 listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), listzombieSkeleton[0].Rectangle.Y+ (int)rot , listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
                
             }
+
           
         }
         public void Attack() {
@@ -104,8 +115,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         }
         public void SkeletonLife()
         {
-            if (Ecir.cameraMove.X >= -50 && Ecir.cameraMove.X <= 100) index = 0;//ao defenir esta área defino qual o indice do skeleton que estou a atacar ou qual posso ser atacado
-            
+          //  if (Ecir.cameraMove.X >= -50 && Ecir.cameraMove.X <= 100) index = 0;//ao definir esta área defino qual o indice do skeleton que estou a atacar ou qual posso ser atacado
+            if (Ecir.cameraMove.X >= 1630 && Ecir.cameraMove.X <= 2200) index = 0;
 
             if (listzombieSkeleton[index] != null)
             {
@@ -152,8 +163,9 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         public Rectangle DrawBarLife(int index)
         {
 
+          //  if (index == 0) return new Rectangle(listzombieSkeleton[0].Rectangle.X - 3, listzombieSkeleton[0].Rectangle.Y - 15, (int)(listzombieSkeleton[0].Life * 0.2), 5);
             if (index == 0) return new Rectangle(listzombieSkeleton[0].Rectangle.X - 3, listzombieSkeleton[0].Rectangle.Y - 15, (int)(listzombieSkeleton[0].Life * 0.2), 5);
-          
+
             return Rectangle;
 
         }
