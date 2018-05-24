@@ -25,7 +25,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
        public static int life  = 100;
         bool ZombieNotTouch = true, lateralColision=false, barAlwaysMove=false, ecirNotToutcSpike=true, killTime=false;
         public static bool directionPositive = false, directionNegative = false;
-        Color color = Color.White;
+      public static  Color color = Color.White;
          double time = 0;
 
 

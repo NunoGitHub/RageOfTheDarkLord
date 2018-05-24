@@ -29,6 +29,9 @@ namespace Rage_of_the_Dark_Lord
         int width, height;
         Vector3 screenScale;
         Texture2D ecirBarLife, zombieBarLife;
+        bool pause = false;
+        int isPaused = 0;
+        KeyboardState keyState, keyStateOld;
 
         public Game1()
         {
@@ -106,37 +109,56 @@ namespace Rage_of_the_Dark_Lord
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            if (!ecir.EcirDestroy())
+            keyState = Keyboard.GetState();
+            if (pause == false)
             {
-                ecir.EcirMove(2, 2);
-                ecir.TerrainColisions();
-                ecir.EcirLife();
-            }
-            hollowKnight.Update();
-            ecir.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
-            stairs.Update();
-            ogre.Update();
-            ogre.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
-            terrain1.Update();
-            skeleton.Update();
-            skeleton.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds, gameTime.ElapsedGameTime.Milliseconds);
-            fireBall.Update();
-            fireBall.CreateFireBall(graphics);
-            fireBall.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
 
-            if (zombie != null)
-            {
-                zombie.UpdateTimer(gameTime.ElapsedGameTime.TotalSeconds);
-                zombie.ZombieChageDirection();
-                zombie.ZombieMove();
-                zombie.ZombieLife();
-                zombie.ZombieColor();
+                if (!ecir.EcirDestroy())
+                {
+                    ecir.EcirMove(2, 2);
+                    ecir.TerrainColisions();
+                    ecir.EcirLife();
+                }
+                hollowKnight.Update();
+                ecir.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
+                stairs.Update();
+                ogre.Update();
+                ogre.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
+                terrain1.Update();
+                skeleton.Update();
+                skeleton.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds, gameTime.ElapsedGameTime.Milliseconds);
+                fireBall.Update();
+                fireBall.CreateFireBall(graphics);
+                fireBall.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
+
+                if (zombie != null)
+                {
+                    zombie.UpdateTimer(gameTime.ElapsedGameTime.TotalSeconds);
+                    zombie.ZombieChageDirection();
+                    zombie.ZombieMove();
+                    zombie.ZombieLife();
+                    zombie.ZombieColor();
+                }
+                hollowKnight.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
+                Console.WriteLine("Pause==" + pause);
+                base.Update(gameTime);
             }
-            hollowKnight.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
            
-            // TODO: Add your update logic here
-            base.Update(gameTime);
+            if (keyState.IsKeyDown(Keys.P) && !keyStateOld.IsKeyDown(Keys.P))
+            {
+                pause = !pause;
+            }
+            keyStateOld = keyState;
+           
+  
+            
         }
+        public void ChangeGameState(GameState state)
+        {
+
+        
+        }
+        public enum GameState { START, PLAY, END }
 
         /// <summary>
         /// This is called when the game should draw itself.

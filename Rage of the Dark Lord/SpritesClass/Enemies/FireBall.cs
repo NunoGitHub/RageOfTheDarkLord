@@ -78,8 +78,12 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     if (ListFireBall[i] != null)
                         if (Ecir.cameraMove.Intersects(ListFireBall[i].Rectangle))//tira vida ao ecir, e a bola de fogo desaparece
                         {
-                        Ecir.life = Ecir.life - 20;
-                        ListFireBall[i] = null;
+                            Ecir.life = Ecir.life - 20;
+                            Ecir.color = Color.Red;
+                            ListFireBall[i] = null;
+                        }
+                        else {
+                            Ecir.color = Color.White;
                         }
                 }
         }
