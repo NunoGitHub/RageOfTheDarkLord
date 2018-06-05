@@ -6,6 +6,7 @@ using Rage_of_the_Dark_Lord.SpritesClass.Map;
 using System;
 using System.Collections.Generic;
 using Rage_of_the_Dark_Lord.SpritesClass.Enemies;
+using Rage_of_the_Dark_Lord.SpritesClass.Menu;
 namespace Rage_of_the_Dark_Lord
 {
     /// <summary>
@@ -16,6 +17,7 @@ namespace Rage_of_the_Dark_Lord
         GraphicsDeviceManager graphics;
         GraphicsDevice graphicsDevice;
         SpriteBatch spriteBatch;
+        Pause MenuPause = new Pause(new Rectangle(-337, 205, 1080, 400));
         Ecir ecir= new Ecir();
         Zombie zombie = new Zombie();
         Stairs stairs= new Stairs();
@@ -29,7 +31,7 @@ namespace Rage_of_the_Dark_Lord
         int width, height;
         Vector3 screenScale;
         Texture2D ecirBarLife, zombieBarLife;
-        bool pause = false;
+        public static    bool pause = false, restart = false, exit=false;
         int isPaused = 0;
         KeyboardState keyState, keyStateOld;
 
@@ -52,6 +54,7 @@ namespace Rage_of_the_Dark_Lord
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            MenuPause.Insert(graphics);
             spikesTrap.InsertSpikes(graphics);
             ecir = new Ecir(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(-200, 400, 30, 50),new Vector2(1,1), new Vector2(1, 1));
             zombie = new Zombie(new Texture2D(graphics.GraphicsDevice, 50, 50), new Rectangle(400, 490, 30, 50), 1, 1,SpriteEffects.None);
@@ -73,6 +76,7 @@ namespace Rage_of_the_Dark_Lord
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+            MenuPause.LoadContent(this.Content);
             spikesTrap.LoadContent(this.Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ecir.Texture = Content.Load<Texture2D>("Ecir");
@@ -107,8 +111,33 @@ namespace Rage_of_the_Dark_Lord
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+           
+            
+            MouseState mouse = Mouse.GetState();
+            //Mouse.WindowHandle = Window.Handle;
+            Vector2 clickCoord = new Vector2(mouse.X, mouse.Y) + new Vector2((Ecir.cameraMove.X) + 180, (Ecir.cameraMove.Y) + 451);
+            Matrix screenScale = camera.GetTransform();
+            Point mousePoint = new Point((int)clickCoord.X, (int)clickCoord.Y);
+            //Vector2 mousePos = new Vector2(mouse.X, mouse.Y);
+           // Vector2 worldPosition = Vector2.Transform(mousePos, Matrix.Invert(screenScale));
+           // Console.WriteLine("mouseX=" + worldPosition.X + "mouseY=" + worldPosition.Y);
+            
+            MenuPause.Mouse1(mousePoint);
+           // Console.WriteLine("mouseX=" + clickCoord.X + "mouseY=" + clickCoord.Y);
+
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if(exit) Exit();
+            if (pause)
+                this.IsMouseVisible = true;
+            else {
+                this.IsMouseVisible = false;
+            }
+           
+            MenuPause.Update();
+            
+           
             keyState = Keyboard.GetState();
             if (pause == false)
             {
@@ -138,32 +167,43 @@ namespace Rage_of_the_Dark_Lord
                     zombie.ZombieMove();
                     zombie.ZombieLife();
                     zombie.ZombieColor();
+                
                 }
                 hollowKnight.UpdateTime(gameTime.ElapsedGameTime.TotalSeconds);
                 Console.WriteLine("Pause==" + pause);
                 base.Update(gameTime);
-            }
+           }
            
             if (keyState.IsKeyDown(Keys.P) && !keyStateOld.IsKeyDown(Keys.P))
             {
-                pause = !pause;
+                  pause = !pause;//->pausar o jogo
             }
             keyStateOld = keyState;
+            if (restart == true) {
+                this.Initialize();//->reiniciar o jogo
+                this.LoadContent();
+                Zombie.zombieLife = 100;
+                Ecir.life = 100;
+                Ecir.color = Color.White;
+                this.Draw( gameTime);
+
+            }
+            restart = false;
            
   
             
         }
-        public void ChangeGameState(GameState state)
+      /*  public void ChangeGameState(GameState state)
         {
 
         
         }
-        public enum GameState { START, PLAY, END }
+        public enum GameState { START, PLAY, END }*/
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+                /// <summary>
+                /// This is called when the game should draw itself.
+                /// </summary>
+                /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             
@@ -171,6 +211,7 @@ namespace Rage_of_the_Dark_Lord
             GraphicsDevice.Clear(Color.CornflowerBlue);
             screenScale = camera.GetScreenScale(graphicsDevice);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, null, camera1 *Matrix.CreateScale(screenScale));
+           
             spikesTrap.Draw(spriteBatch);
             spriteBatch.Draw(ecirBarLife, ecir.BarLifeEcir(), Color.Red);
             if(zombie!=null)spriteBatch.Draw(zombieBarLife,zombie.ZombieBarLife(), zombie.ColorBar());//se o zombie não for destruido desanha a bar life
@@ -184,7 +225,7 @@ namespace Rage_of_the_Dark_Lord
             if (zombie != null) if (!zombie.DestroyZombie()) spriteBatch.Draw(zombie.Texture, zombie.Rectangle, null, zombie.ZombieColor(), 0, new Vector2(zombie.Rectangle.Width / 2, zombie.Rectangle.Height / 2),zombie.SpriteEffect, 0f);
             skeleton.Draw(spriteBatch);
             fireBall.Draw(spriteBatch);
-
+          if(pause==true)  MenuPause.Draw(spriteBatch);
 
             spriteBatch.End();
 

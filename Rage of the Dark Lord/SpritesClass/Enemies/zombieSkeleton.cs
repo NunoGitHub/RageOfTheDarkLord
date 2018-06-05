@@ -50,7 +50,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         {
             
            // listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(-100, 420, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
-            listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(1650, 120, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 100, Color.Transparent, Color.White, SpriteEffects.None));
+            listzombieSkeleton.Insert(0, new zombieSkeleton(new Rectangle(1650, 120, 50, 30), new Texture2D(graphics.GraphicsDevice, 50, 50), 1, 0, 1, 120, Color.Transparent, Color.White, SpriteEffects.None));
             zombieSkeletonBarLife = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             zombieSkeletonBarLife.SetData(new Color[] { Color.Red });
            // boxAttack = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
@@ -86,7 +86,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             {
               rot = rot * -1;
 
-            }if(rot<=-3 && listzombieSkeleton[0]!=null) listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), 150, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
+            }if(rot<=-3 && listzombieSkeleton[0]!=null) listzombieSkeleton[0].Rectangle = new Rectangle(listzombieSkeleton[0].Rectangle.X + (listzombieSkeleton[0].VelocityX * listzombieSkeleton[0].Direction), 170, listzombieSkeleton[0].Rectangle.Width, listzombieSkeleton[0].Rectangle.Height);
            // if (rot <= -3 && listzombieSkeleton[1] != null) listzombieSkeleton[1].Rectangle = new Rectangle(listzombieSkeleton[1].Rectangle.X + (listzombieSkeleton[1].VelocityX * listzombieSkeleton[1].Direction), 150, listzombieSkeleton[1].Rectangle.Width, listzombieSkeleton[1].Rectangle.Height);
 
          /*   if (listzombieSkeleton[0] != null)

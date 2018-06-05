@@ -257,14 +257,14 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                     killTime = true;
                     countTime = true;
                     HollowKnight.listHollowKnight[HollowKnight.index].VelocityX = 0;
-                    if (time >= 0.6 && takeLife==true)// Hollow knight para e ataca
+                    if (time >= 0.5 && takeLife==true)// Hollow knight para e ataca
                     {
                         color = Color.Red;
                         life = life - 40;
                         takeLife = false;
 
                     }
-                    if (time >= 1.1)
+                    if (time >= 0.9)
                     {//Hollow knight continua a andar depois do ataque
                         HollowKnight.listHollowKnight[HollowKnight.index].VelocityX = 2;
                         hollowKnightTouch = false;
@@ -273,7 +273,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                         takeLife = true;
                     }
                 }
-                if (time >= 1.5)//quando para para atacar mas o jogador foge então o encir continua a andar
+                if (time >= 0.9)//quando para para atacar mas o jogador foge então o encir continua a andar
                 {
                     HollowKnight.listHollowKnight[HollowKnight.index].VelocityX = 2;
                     hollowKnightTouch = false; 
@@ -284,7 +284,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                 if (this.Rectangle.Intersects(HollowKnight.hollowAttackArea) == false && hollowKnightTouch == false)
                 {
                     hollowKnightTouch = true;
-                    if(time < 1.6) {
+                    if(time < 1.1) {
                         if (changeColor != 1) 
                         color = Color.White;
                     }
@@ -323,7 +323,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                     killTime = true;
                     countTimeOgre = true;
                     Ogre.listOgre[Ogre.index].VelocityX = 0;
-                    if (time >= 1.6 && takeLifeOgre == true)// ogre  para e ataca
+                    if (time >= 1.1 && takeLifeOgre == true)// ogre  para e ataca
                     {
                         color = Color.Red;
                         life = life - 60;
@@ -331,7 +331,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                         
 
                     }
-                    if (time >= 2)
+                    if (time >= 1.5)
                     {//Ogre  continua a andar depois do ataque
                         Ogre.listOgre[Ogre.index].VelocityX = 1;
                         ogreTouch = false;
@@ -340,7 +340,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Caracter
                         takeLifeOgre = true;
                     }
                 }
-                if (time >= 2)//quando para para atacar mas o jogador foge então o encir continua a andar
+                if (time >= 1.5)//quando para para atacar mas o jogador foge então o encir continua a andar
                 {
                     Ogre.listOgre[Ogre.index].VelocityX = 1;
                     ogreTouch = false;

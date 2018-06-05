@@ -38,6 +38,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
 
         public void Draw(SpriteBatch spriteBatch) {
             for (int i = 0; i < 4; i++) {
+                if(listSpikesTrap[i]!=null)
                 spriteBatch.Draw(listSpikesTrap[i].Texture, listSpikesTrap[i].Rectangle, Color.White);
             }
            
@@ -46,7 +47,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Map
         public void LoadContent(ContentManager Content) {
             for (int i = 0; i < 4; i++)
             {
-                listSpikesTrap[i].Texture = Content.Load<Texture2D>("spikes");
+                if (listSpikesTrap[i] != null)
+                    listSpikesTrap[i].Texture = Content.Load<Texture2D>("spikes");
             }
 
         }

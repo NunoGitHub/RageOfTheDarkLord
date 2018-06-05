@@ -23,18 +23,14 @@ namespace Rage_of_the_Dark_Lord
             this.PY = PositionY;
         }
 
-        public Matrix GetTransform()
-            
+        public Matrix GetTransform()  
         {
-
-
-
             Matrix translationMatrix = Matrix.CreateTranslation(new Vector3(0,0, 0));
               if(Ecir.cameraMove.X>= 3832) translationMatrix = Matrix.CreateTranslation(new Vector3(-3654, 444, 0));
 
             if (Ecir.cameraMove.X >= (740 / 2)- 190 &&  Ecir.cameraMove.X<=3832)
             {
-                translationMatrix = Matrix.CreateTranslation(new Vector3(-1 * (Ecir.cameraMove.X)+370-190, -1 * (Ecir.cameraMove.Y)+ 451, 0));//camara move-se com a personagem
+                translationMatrix = Matrix.CreateTranslation(new Vector3(-1 * (Ecir.cameraMove.X)+180, -1 * (Ecir.cameraMove.Y)+ 451, 0));//camara move-se com a personagem
                 //translationMatrix = Matrix.CreateTranslation(new Vector3())
 
                 cameraAllwaysMove = true;

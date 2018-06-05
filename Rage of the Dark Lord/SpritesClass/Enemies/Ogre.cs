@@ -101,24 +101,24 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                         listOgre[index].Life = 250;
                         time = 0;
                     }
-                    if (time >= 1 && listOgre[index].Life == 250)
+                    if (time >= 0.7 && listOgre[index].Life == 250)
                     {
                         listOgre[index].Life = 150;
                         time = 0;
                     }
-                    if (time >= 1 && listOgre[index].Life == 150)
+                    if (time >= 0.7 && listOgre[index].Life == 150)
                     {
                         listOgre[index].Life = 100;
                         time = 0;
 
                     }
-                    if (time >= 1 && listOgre[index].Life == 100)
+                    if (time >= 0.7 && listOgre[index].Life == 100)
                     {
                         listOgre[index].Life = 50;
                         time = 0;
 
                     }
-                    if (time >= 1 && listOgre[index].Life == 50)
+                    if (time >= 0.7 && listOgre[index].Life == 50)
                     {
                         listOgre[index].Life = 0;
                         listOgre[index] = null;
@@ -139,7 +139,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     listOgre[index].Color = Color.Red;//faz aparecer a barra de vida
                     listOgre[index].OgreColor = Color.Red;//cor do ogre
                 }
-                if (time >= 1 && listOgre[index].Life == 250)
+                if (time >= 1.5 && listOgre[index].Life == 250)
                 {
                     listOgre[index].Color = Color.Transparent;
                     listOgre[index].OgreColor = Color.White;

@@ -66,7 +66,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
         }
         public void LoadContent(ContentManager Content) {
             for(int i=0; i < 4; i++)
-            {
+            { 
                 listHollowKnight[i].Texture = Content.Load<Texture2D>("HollowKnight");
      
             }
@@ -113,8 +113,8 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
             {
                 hollowKnightCol = new Rectangle(listHollowKnight[index].Rectangle.X - 60, listHollowKnight[index].Rectangle.Y - 25, 150, 75);//area de colisão de ataque do ecir
 
-                if (listHollowKnight[index].Direction== -1) hollowAttackArea = new Rectangle(listHollowKnight[index].Rectangle.X - 10, listHollowKnight[index].Rectangle.Y , 30, 75);//knight ataca pela esquerda
-                if (listHollowKnight[index].Direction == 1) hollowAttackArea = new Rectangle(listHollowKnight[index].Rectangle.X +40, listHollowKnight[index].Rectangle.Y , 30, 75);//knight ataca pela direita
+                if (listHollowKnight[index].Direction== -1) hollowAttackArea = new Rectangle(listHollowKnight[index].Rectangle.X - 10, listHollowKnight[index].Rectangle.Y , 40, 75);//knight ataca pela esquerda
+                if (listHollowKnight[index].Direction == 1) hollowAttackArea = new Rectangle(listHollowKnight[index].Rectangle.X +40, listHollowKnight[index].Rectangle.Y , 40, 75);//knight ataca pela direita
                 //Ecir ataca pela direita e esquerda
                 if (hollowKnightCol.Intersects(Ecir.cameraMove) && listHollowKnight[index].Rectangle.X >= Ecir.cameraMove.X && Ecir.directionPositive == true && Ecir.EcirAttack() == 1 || hollowKnightCol.Intersects(Ecir.cameraMove) && listHollowKnight[index].Rectangle.X <= Ecir.cameraMove.X && Ecir.directionNegative == true && Ecir.EcirAttack() == 1)
                 {
@@ -123,18 +123,18 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                         listHollowKnight[index].Life = 150;
                         time = 0;
                     }
-                    if (time >= 1 && listHollowKnight[index].Life == 150)
+                    if (time >= 0.7 && listHollowKnight[index].Life == 150)
                     {
                         listHollowKnight[index].Life = 100;
                         time = 0;
                     }
-                    if (time >= 1 && listHollowKnight[index].Life == 100)
+                    if (time >= 0.7 && listHollowKnight[index].Life == 100)
                     {
                         listHollowKnight[index].Life = 50;
                         time = 0;
 
                     }
-                    if (time >= 1 && listHollowKnight[index].Life == 50)
+                    if (time >= 0.7 && listHollowKnight[index].Life == 50)
                     {
                         listHollowKnight[index].Life = 0;
                         listHollowKnight[index] = null;
@@ -153,27 +153,27 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     listHollowKnight[index].Color = Color.Red;//faz aparecer a barra de vida
                     listHollowKnight[index].KnightColor = Color.Red;//cor do hollow knight
                 }
-                if (time >= 0.5 && listHollowKnight[index].Life == 150)
+                if (time >= 0.3 && listHollowKnight[index].Life == 150)
                 {
                     listHollowKnight[index].Color = Color.Transparent;
                     listHollowKnight[index].KnightColor = Color.White;
                 }
-                if (time >= 0.5 && listHollowKnight[index].Life == 100 && time <= 1)
+                if (time >= 0.3 && listHollowKnight[index].Life == 100 && time <= 1)
                 {
                     listHollowKnight[index].Color = Color.Red;
                     listHollowKnight[index].KnightColor=Color.Red;
                 }
-                if (time >= 0.5 && listHollowKnight[index].Life == 100)
+                if (time >= 0.3 && listHollowKnight[index].Life == 100)
                 {
                     listHollowKnight[index].Color = Color.Transparent;
                     listHollowKnight[index].KnightColor = Color.White;
                 }
-                if (time >= 0 && listHollowKnight[index].Life == 50 && time <= 1)
+                if (time >= 0 && listHollowKnight[index].Life == 50 && time <= 0.5)
                 {
                     listHollowKnight[index].Color = Color.Red;
                     listHollowKnight[index].KnightColor = Color.Red;
                 }
-                if (time >= 0.5 && listHollowKnight[index].Life == 50)
+                if (time >= 0.3 && listHollowKnight[index].Life == 50)
                 {
                     listHollowKnight[index].Color = Color.Transparent;
                     listHollowKnight[index].KnightColor = Color.White;

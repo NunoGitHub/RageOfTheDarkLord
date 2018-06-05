@@ -104,7 +104,7 @@ namespace Rage_of_the_Dark_Lord.SpritesClass.Enemies
                     return zombieLife;
 
                 }
-                if (time >= 1)
+                if (time >= 0.7)
                 {
                     zombieLife = 0;
                     return zombieLife;

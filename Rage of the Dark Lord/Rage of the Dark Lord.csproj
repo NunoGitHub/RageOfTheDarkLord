@@ -54,6 +54,7 @@
     <Compile Include="SpritesClass\Map\SpikesTrap.cs" />
     <Compile Include="SpritesClass\Map\Stairs.cs" />
     <Compile Include="SpritesClass\Map\Terrain1.cs" />
+    <Compile Include="SpritesClass\Menu\Pause.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
